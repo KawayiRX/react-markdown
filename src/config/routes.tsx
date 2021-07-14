@@ -6,6 +6,7 @@ import BasicLayout from "layout/basic-layout";
 export type RouteTypes = {
   name?: string;
   path: string;
+  key: string;
   component: any;
   redirect?: string;
   exact?: boolean;
@@ -17,20 +18,24 @@ export const routes = [
   {
     path: "/",
     component: BlankLayout,
+    key: "blank-layout",
     routes: [
       {
         path: "/",
         component: BasicLayout,
+        key: "basic-layout",
         routes: [
           {
             path: "/npm",
             name: "npm",
+            key: "npn",
             exact: true,
             component: loadabled(() => import("views/npm"))
           },
           {
             path: "/vue",
             name: "vue",
+            key: "vue",
             exact: true,
             component: loadabled(() => import("views/vue"))
           }

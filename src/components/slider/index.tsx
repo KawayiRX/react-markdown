@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu, Layout } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 import { RouteTypes } from "config/routes";
 import "./index.css";
 
@@ -16,11 +17,11 @@ const Slider: React.FC<SliderType> = (props) => {
   const renderMenuItem = (route: RouteTypes[]): any =>
     route
       .filter((item) => item.name && item.path)
-      .map((item, index) => {
+      .map((item) => {
         if (item.routes && item.path && item.name) {
           return (
             <Menu.SubMenu
-              key={item.path + item.name}
+              key={item.key}
               title={
                 <div>
                   <span>{item.name}</span>
@@ -32,21 +33,18 @@ const Slider: React.FC<SliderType> = (props) => {
           );
         }
         return (
-          <Menu
-            theme="light"
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            key={item.path + item.name}
-          >
-            <Menu.Item icon={<UserOutlined />}>{item.name}</Menu.Item>
-          </Menu>
+          <Menu.Item icon={<UserOutlined />} key={item.key}>
+            <Link to={item.path}>{item.name}</Link>
+          </Menu.Item>
         );
       });
 
   return (
-    <Layout.Sider trigger={null} collapsible>
+    <Layout.Sider trigger={null} collapsible theme="light">
       <div className="logo" />
-      {renderMenuItem(routes || [])}
+      <Menu theme="light" mode="inline">
+        {renderMenuItem(routes || [])}
+      </Menu>
     </Layout.Sider>
   );
 };

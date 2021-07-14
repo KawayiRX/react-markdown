@@ -12,7 +12,7 @@ const { Content } = Layout;
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const { children, route } = props;
   return (
-    <Layout style={{ height: "100%" }}>
+    <Layout style={{ height: "100%" }} className="layout">
       <Slider routes={route.routes} />
       <Layout className="site-layout">
         <Content
