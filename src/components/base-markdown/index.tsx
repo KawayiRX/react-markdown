@@ -1,19 +1,20 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+// import codesandbox from 'remark-codesandbox'
 import rehypeRaw from "rehype-raw";
 import { SyntaxHighlighterProps } from "react-syntax-highlighter";
-import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Highlighter from "../syntax-highlighter";
 
 interface BaseMarkdownProps {
-  theme?: typeof darcula;
+  theme?: typeof tomorrow;
   source?: any;
   markdown: string;
 }
 
 const BaseMarkdown: React.FC<BaseMarkdownProps> = (props) => {
-  const { markdown, theme } = props;
+  const { markdown, theme = tomorrow } = props;
   const components = {
     code({
       node,
@@ -22,7 +23,7 @@ const BaseMarkdown: React.FC<BaseMarkdownProps> = (props) => {
       children,
       ...props
     }: SyntaxHighlighterProps) {
-      const match = /language-(\w+)/.exec(className || "")!;
+      const match = /language-(\w+)/.exec(className || "") || [];
       return (
         <Highlighter
           theme={theme}
