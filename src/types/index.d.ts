@@ -8,3 +8,8 @@ declare module 'remark-images' {
     const Image: any
     export default Image
 }
+
+declare module '*.md' {
+    const MD: string
+    export default MD
+}

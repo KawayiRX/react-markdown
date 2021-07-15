@@ -7,7 +7,7 @@ export type RouteTypes = {
   name?: string;
   path: string;
   key: string;
-  component: any;
+  component?: any;
   redirect?: string;
   exact?: boolean;
   strict?: boolean;
@@ -28,9 +28,16 @@ export const routes = [
           {
             path: "/npm",
             name: "npm",
-            key: "npn",
-            exact: true,
-            component: loadabled(() => import("views/npm"))
+            key: "npm",
+            // component: loadabled(() => import("views/npm/base")),
+            routes: [
+              {
+                path: "/npm/base",
+                name: "npm-base",
+                key: "npm-base",
+                component: loadabled(() => import("views/npm/base")),
+              }
+            ]
           },
           {
             path: "/vue",
