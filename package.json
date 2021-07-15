@@ -19,7 +19,6 @@
     "react-scripts": "4.0.0",
     "react-syntax-highlighter": "15.4.3",
     "rehype-raw": "5.1.0",
-    "remark-codesandbox": "^0.10.0",
     "remark-gfm": "1.0.0"
   },
   "devDependencies": {

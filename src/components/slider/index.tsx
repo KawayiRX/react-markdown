@@ -1,6 +1,6 @@
 import React from "react";
-import { Menu, Layout } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
+// import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { RouteTypes } from "config/routes";
 import "./index.css";
@@ -33,19 +33,19 @@ const Slider: React.FC<SliderType> = (props) => {
           );
         }
         return (
-          <Menu.Item icon={<UserOutlined />} key={item.key}>
+          <Menu.Item key={item.key}>
             <Link to={item.path}>{item.name}</Link>
           </Menu.Item>
         );
       });
 
   return (
-    <Layout.Sider trigger={null} collapsible theme="light">
-      <div className="logo" />
-      <Menu theme="light" mode="inline">
-        {renderMenuItem(routes || [])}
-      </Menu>
-    </Layout.Sider>
+    // <Layout.Sider trigger={null} collapsible theme="light">
+    // <div className="logo" />
+    <Menu theme="light" mode="horizontal">
+      {renderMenuItem(routes || [])}
+    </Menu>
+    // </Layout.Sider>
   );
 };
 
