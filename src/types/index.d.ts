@@ -13,3 +13,8 @@ declare module '*.md' {
     const MD: string
     export default MD
 }
+
+declare module 'rehype-picture' {
+    const MD: any
+    export default MD
+}

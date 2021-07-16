@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "antd";
 import { RouteTypes } from "config/routes";
-import Slider from "components/slider";
+import Slider from "components/menu";
 
 interface BasicLayoutProps {
   route: RouteTypes;

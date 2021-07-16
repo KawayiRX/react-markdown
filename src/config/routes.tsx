@@ -6,7 +6,6 @@ import BasicLayout from "layout/basic-layout";
 export type RouteTypes = {
   name?: string;
   path: string;
-  key: string;
   component?: any;
   redirect?: string;
   exact?: boolean;
@@ -14,40 +13,36 @@ export type RouteTypes = {
   routes?: RouteTypes[];
 };
 
-export const routes = [
+export const routes: RouteTypes[] = [
   {
     path: "/",
     component: BlankLayout,
-    key: "blank-layout",
     routes: [
       {
         path: "/",
         component: BasicLayout,
-        key: "basic-layout",
         routes: [
           {
             path: "/npm",
             name: "npm",
-            key: "npm",
-            // component: loadabled(() => import("views/npm/base")),
+            component: loadabled(() => import("views/npm")),
             routes: [
               {
                 path: "/npm/base",
-                name: "npm-base",
-                key: "npm-base",
-                component: loadabled(() => import("views/npm/base")),
+                name: "base",
+                component: loadabled(() => import("views/npm/screen/base")),
               }
             ]
           },
           {
             path: "/vue",
             name: "vue",
-            key: "vue",
-            exact: true,
             component: loadabled(() => import("views/vue"))
-          }
-        ]
-      }
-    ]
+          },
+          { path: "/", exact: true, redirect: "/npm/base" },
+          // { path: "*", exact: true, redirect: "/exception/404" }
+        ],
+      },
+    ],
   }
 ];
