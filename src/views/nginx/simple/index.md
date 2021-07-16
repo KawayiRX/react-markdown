@@ -2,19 +2,19 @@
 
 ## 前端项目
 
-1. 配置 publicPath(webpack)
+>>> 配置 publicPath(webpack)
 
 ```js
     output.publicPath = "/music"
 ```
 
-2. 配置入口 html 文件的 meta 标签的 base 属性
+>>> 配置入口 html 文件的 meta 标签的 base 属性
 
 ```js
     <meta base="/music"/>
 ```
 
-3. 配置路由 basename 属性
+>>> 配置路由 basename 属性
 
 ```jsx
     <HistoryRouter basename="/music"></HistoryRouter>
@@ -22,7 +22,7 @@
 
 ### 服务器
 
-1. 配置 nginx.conf 文件
+>>> 配置 nginx.conf 文件
 
 ```shell
 listen       80; # 监听的端口
@@ -39,4 +39,5 @@ listen       80; # 监听的端口
   }
 ```
 
-<https://gitee.com/leijianggitee/docs/raw/master/_media/nginx.jpeg>
+<https://www.jianshu.com/p/276d59cbc529>
+<!-- <https://gitee.com/leijianggitee/docs/raw/master/_media/nginx.jpeg> -->
