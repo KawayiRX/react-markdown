@@ -15,10 +15,10 @@ const InnerLayout: React.FC<InnerLayoutProps> = props => {
 
     return (
         <Layout>
-            <Sider style={{ background: "#fff" }}>
+            <Sider style={{ background: "#fff" }} >
                 <Menu routes={route.routes} mode="inline" />
             </Sider>
-            <Content style={{ background: "#fff" }}>{children}</Content>
+            <Content style={{ background: "#fff", paddingLeft: 20 }}>{children}</Content>
         </Layout>
     )
 }

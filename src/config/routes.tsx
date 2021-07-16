@@ -31,13 +31,27 @@ export const routes: RouteTypes[] = [
                 path: "/npm/base",
                 name: "base",
                 component: loadabled(() => import("views/npm/screen/base")),
-              }
+              },
+              { path: "/npm", exact: true, redirect: "/npm/base" },
             ]
           },
           {
             path: "/vue",
             name: "vue",
             component: loadabled(() => import("views/vue"))
+          },
+          {
+            path: "/jenkins",
+            name: "jenkins",
+            component: loadabled(() => import("views/jenkins")),
+            routes: [
+              {
+                path: "/jenkins/base",
+                name: "安装",
+                component: loadabled(() => import("views/jenkins/screen/base")),
+              },
+              { path: "/jenkins", exact: true, redirect: "/jenkins/base" },
+            ]
           },
           { path: "/", exact: true, redirect: "/npm/base" },
           // { path: "*", exact: true, redirect: "/exception/404" }
