@@ -48,7 +48,7 @@ export const routes: RouteTypes[] = [
               {
                 path: "/jenkins/base",
                 name: "安装",
-                component: loadabled(() => import("views/jenkins/screen/base")),
+                component: loadabled(() => import("views/jenkins/base")),
               },
               { path: "/jenkins", exact: true, redirect: "/jenkins/base" },
             ]

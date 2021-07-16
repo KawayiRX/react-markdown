@@ -43,7 +43,7 @@ const Slider: React.FC<SliderType> = (props) => {
   return (
     // <Layout.Sider trigger={null} collapsible theme="light">
     // <div className="logo" />
-    <Menu theme="light" mode={mode} defaultActiveFirst>
+    <Menu theme="light" mode={mode} defaultActiveFirst defaultSelectedKeys={[routes[0]?.path]}>
       {renderMenuItem(routes || [])}
     </Menu>
     // </Layout.Sider>

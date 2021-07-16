@@ -2,14 +2,14 @@ import React from 'react'
 import InnerLayout from 'layout/inner-layout'
 import { RouteTypes } from 'config/routes';
 
-interface NpmProps {
+interface JenkinsProps {
     route: RouteTypes
 }
 
-const Npm: React.FC<NpmProps> = props => {
+const Jenkins: React.FC<JenkinsProps> = props => {
     const { route, children } = props
 
     return <InnerLayout route={route}>{children}</InnerLayout>
 }
 
-export default Npm
+export default Jenkins

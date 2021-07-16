@@ -6,10 +6,10 @@ export const useMount = (fn: () => void) => {
     }, [])
 }
 
-export const useMarkdown = (url: string) => {
+export const useMarkdown = (url: string): { markdown: string } => {
     const [markdown, setMarkdown] = useState('')
     useMount(() => {
-        fetch(url).then(md => md.text()).then(m => setMarkdown(m))
+        fetch(url).then(md => md.text()).then(m => setMarkdown(m)).catch(() => setMarkdown(''))
     })
 
     return {

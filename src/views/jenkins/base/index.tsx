@@ -1,6 +1,6 @@
 import React from 'react'
 import BaseMarkdown from "components/base-markdown";
-import md from './base.md'
+import md from './index.md'
 import { useMarkdown } from 'hooks';
 
 const BaseJenkins = () => {
