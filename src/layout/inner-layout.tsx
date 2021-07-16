@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout } from 'antd'
 import Menu from 'components/menu'
 import { RouteTypes } from 'config/routes'
+import './index.less'
 
 const { Sider, Content } = Layout
 
@@ -18,7 +19,7 @@ const InnerLayout: React.FC<InnerLayoutProps> = props => {
             <Sider style={{ background: "#fff" }}>
                 <Menu routes={route.routes} mode="inline" />
             </Sider>
-            <Content style={{ background: "#fff", paddingLeft: 20 }}>{children}</Content>
+            <Content style={{ background: "#fff", paddingLeft: 20 }} className="inner-layout">{children}</Content>
         </Layout>
     )
 }

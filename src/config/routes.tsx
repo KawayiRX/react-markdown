@@ -41,19 +41,24 @@ export const routes: RouteTypes[] = [
             component: loadabled(() => import("views/vue"))
           },
           {
-            path: "/jenkins",
-            name: "jenkins",
-            component: loadabled(() => import("views/jenkins")),
+            path: "/nginx",
+            name: "nginx",
+            component: loadabled(() => import("views/nginx")),
             routes: [
               {
-                path: "/jenkins/base",
-                name: "安装",
-                component: loadabled(() => import("views/jenkins/base")),
+                path: "/nginx/install",
+                name: "install",
+                component: loadabled(() => import("views/nginx/install")),
               },
-              { path: "/jenkins", exact: true, redirect: "/jenkins/base" },
+              {
+                path: "/nginx/simple",
+                name: "simple",
+                component: loadabled(() => import("views/nginx/simple")),
+              },
+              { path: "/nginx", exact: true, redirect: "/nginx/base" },
             ]
           },
-          { path: "/", exact: true, redirect: "/npm/base" },
+          { path: "/", exact: true, redirect: "/npm/install" },
           // { path: "*", exact: true, redirect: "/exception/404" }
         ],
       },
