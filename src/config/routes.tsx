@@ -23,16 +23,59 @@ export const routes: RouteTypes[] = [
         component: BasicLayout,
         routes: [
           {
-            path: "/npm",
-            name: "npm",
-            component: loadabled(() => import("views/npm")),
+            path: "/node",
+            name: "node",
+            component: loadabled(() => import("views/node")),
             routes: [
               {
-                path: "/npm/base",
-                name: "base",
-                component: loadabled(() => import("views/npm/screen/base")),
+                path: "/node/npm",
+                name: "node",
+                component: loadabled(() => import("views/node/npm")),
               },
-              { path: "/npm", exact: true, redirect: "/npm/base" },
+              { path: "/node", exact: true, redirect: "/node/npm" },
+            ]
+          },
+          {
+            path: "/utils",
+            name: "utils",
+            component: loadabled(() => import("views/utils")),
+            routes: [
+              {
+                name: "Type",
+                path: "/utils/type",
+                component: loadabled(() => import("views/utils/type")),
+              },
+              {
+                name: "Array",
+                path: "/utils/array",
+                component: loadabled(() => import("views/utils/array")),
+              },
+              {
+                name: "Date",
+                path: "/utils/date",
+                component: loadabled(() => import("views/utils/date")),
+              },
+              {
+                name: "Dom",
+                path: "/utils/dom",
+                component: loadabled(() => import("views/utils/dom")),
+              },
+              {
+                name: "String",
+                path: "/utils/string",
+                component: loadabled(() => import("views/utils/string")),
+              },
+              {
+                name: "Object",
+                path: "/utils/object",
+                component: loadabled(() => import("views/utils/object")),
+              },
+              {
+                name: "Utils",
+                path: "/utils/utils",
+                component: loadabled(() => import("views/utils/utils")),
+              },
+              { path: "/", exact: true, redirect: "/utils/array" },
             ]
           },
           {
@@ -55,10 +98,10 @@ export const routes: RouteTypes[] = [
                 name: "simple",
                 component: loadabled(() => import("views/nginx/simple")),
               },
-              { path: "/nginx", exact: true, redirect: "/nginx/base" },
+              { path: "/nginx", exact: true, redirect: "/nginx/install" },
             ]
           },
-          { path: "/", exact: true, redirect: "/npm/install" },
+          { path: "/", exact: true, redirect: "/node/npm" },
           // { path: "*", exact: true, redirect: "/exception/404" }
         ],
       },

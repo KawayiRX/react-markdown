@@ -5,6 +5,8 @@ import {
 } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+import ts from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import git from 'react-syntax-highlighter/dist/esm/languages/prism/css';
 import css from 'react-syntax-highlighter/dist/esm/languages/prism/git';
@@ -22,6 +24,8 @@ const Highlighter: React.FC<HighlighterProps> = (props) => {
   useEffect(() => {
     SyntaxHighlighter.registerLanguage('jsx', jsx)
     SyntaxHighlighter.registerLanguage('js', js)
+    SyntaxHighlighter.registerLanguage('ts', ts)
+    SyntaxHighlighter.registerLanguage('tsx', tsx)
     SyntaxHighlighter.registerLanguage('git', git)
     SyntaxHighlighter.registerLanguage('css', css)
     SyntaxHighlighter.registerLanguage('nginx', nginx)
