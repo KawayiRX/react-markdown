@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const H1 = styled.h1`
-    font-size: 15px;
+    font-size: 17px;
+    border: 500;
     margin: 5px 0;
 `
 
@@ -28,3 +29,21 @@ export const LineNo = styled.span`
 export const LineContent = styled.span`
   display: table-cell;
 `;
+
+export const Preview = styled.div`
+  height: 100%;
+  flex: 1;
+  padding-left: 10px;
+`
+
+export const PreviewContainer = styled.div`
+  display: flex;
+  height: 500px;
+  border: none !important;
+  &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
+`
+
+export const Editor = styled.div`
+  overflow: 'scroll';
+  flex: 0 0 50%;
+`

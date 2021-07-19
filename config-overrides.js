@@ -22,6 +22,9 @@ module.exports = override(
             fs: "empty"
         }
 
+        config.resolve.extensions.unshift('.md')
+        config.resolve.extensions.unshift('.mdx')
+
         const loaders = config.module.rules.find(rule => Array.isArray(rule.oneOf)).oneOf;
 
         loaders.unshift({

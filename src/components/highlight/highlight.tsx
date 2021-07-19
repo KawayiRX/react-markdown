@@ -1,8 +1,10 @@
 import React from "react";
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import { mdx } from '@mdx-js/react'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import theme from "prism-react-renderer/themes/github";
-import { Pre, Line, LineContent, LineNo } from 'components/highlight/styles'
+import theme from "prism-react-renderer/themes/duotoneLight";
+import provideTheme from 'prism-react-renderer/themes/palenight'
+import { Pre, Line, LineContent, LineNo, Preview, Editor, PreviewContainer } from 'components/highlight/styles'
 
 interface IHighlightProps {
     children?: string;
@@ -20,14 +22,23 @@ const IHighlight: React.FC<IHighlightProps> = props => {
 
     if (live) {
         return (
-            <div style={{ marginTop: '40px', backgroundColor: 'black' }}>
+            <div style={{ marginTop: 20 }}>
                 <LiveProvider
+                    theme={provideTheme}
+                    style={{ border: "none", scrollbarWidth: "none" }}
                     code={children.trim()}
-                    transformCode={code => '/** @jsx mdx */' + code}
+                    transformCode={code => '/** @jsx mdx tsx*/' + code}
+                    scope={{ mdx }}
                 >
-                    <LivePreview />
-                    <LiveEditor />
-                    <LiveError />
+                    <PreviewContainer>
+                        <Editor>
+                            <LiveEditor />
+                            <LiveError />
+                        </Editor>
+                        <Preview>
+                            <LivePreview />
+                        </Preview>
+                    </PreviewContainer>
                 </LiveProvider>
             </div>
         )

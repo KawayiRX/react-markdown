@@ -36,4 +36,6 @@ declare module '@mdx-js/react' {
         components: Components
     }
     export class MDXProvider extends React.Component<MDXProviderProps> { }
+
+    export const mdx: any
 }
