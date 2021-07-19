@@ -38,7 +38,7 @@ export const Preview = styled.div`
 
 export const PreviewContainer = styled.div`
   display: flex;
-  height: 500px;
+  height: 600px;
   border: none !important;
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
 `

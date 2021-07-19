@@ -1,6 +1,9 @@
 import React from "react";
+import styled from 'styled-components';
 import Highlight, { defaultProps } from "prism-react-renderer";
+import { transform } from '@babel/core'
 import { mdx } from '@mdx-js/react'
+import { Button } from 'antd'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import theme from "prism-react-renderer/themes/duotoneLight";
 import provideTheme from 'prism-react-renderer/themes/palenight'
@@ -11,12 +14,12 @@ interface IHighlightProps {
     className?: string;
     live?: boolean;
     render?: boolean;
+    noInline?: boolean;
 }
-
 
 const IHighlight: React.FC<IHighlightProps> = props => {
 
-    const { className = '', live, children = "", render } = props;
+    const { className = '', live, children = "", render, noInline } = props;
 
     const lang: any = className.replace(/language-/, '')
 
@@ -27,8 +30,20 @@ const IHighlight: React.FC<IHighlightProps> = props => {
                     theme={provideTheme}
                     style={{ border: "none", scrollbarWidth: "none" }}
                     code={children.trim()}
-                    transformCode={code => '/** @jsx mdx tsx*/' + code}
-                    scope={{ mdx }}
+                    noInline={noInline}
+                    transformCode={code => {
+                        const transformed = transform(code, {
+                            plugins: [
+                                require('@babel/plugin-syntax-jsx'),
+                                [
+                                    require("@babel/plugin-proposal-class-properties"),
+                                    { loose: true }
+                                ]
+                            ]
+                        })?.code
+                        return transformed || ''
+                    }}
+                    scope={{ mdx, styled, Button }}
                 >
                     <PreviewContainer>
                         <Editor>
