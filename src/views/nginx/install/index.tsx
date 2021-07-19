@@ -1,13 +1,10 @@
 import React from 'react'
-import BaseMarkdown from "components/base-markdown";
-import md from './index.md'
-import { useMarkdown } from 'hooks';
+import Nginx from './index.md'
 
-const BaseJenkins = () => {
-    const { markdown } = useMarkdown(md)
+const BaseNginx = () => {
     return (
-        <BaseMarkdown markdown={markdown} />
+        <Nginx />
     )
 }
 
-export default BaseJenkins
+export default BaseNginx

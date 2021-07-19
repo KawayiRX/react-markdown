@@ -29,8 +29,8 @@ export const routes: RouteTypes[] = [
             routes: [
               {
                 path: "/node/npm",
-                name: "node",
-                component: loadabled(() => import("views/node/npm")),
+                name: "npm",
+                component: loadabled(() => import("views/node/npm/index.md")),
               },
               { path: "/node", exact: true, redirect: "/node/npm" },
             ]
@@ -43,45 +43,45 @@ export const routes: RouteTypes[] = [
               {
                 name: "Type",
                 path: "/utils/type",
-                component: loadabled(() => import("views/utils/type")),
+                component: loadabled(() => import("views/utils/type/index.md")),
               },
               {
                 name: "Array",
                 path: "/utils/array",
-                component: loadabled(() => import("views/utils/array")),
+                component: loadabled(() => import("views/utils/array/index.md")),
               },
               {
                 name: "Date",
                 path: "/utils/date",
-                component: loadabled(() => import("views/utils/date")),
+                component: loadabled(() => import("views/utils/date/index.md")),
               },
               {
                 name: "Dom",
                 path: "/utils/dom",
-                component: loadabled(() => import("views/utils/dom")),
+                component: loadabled(() => import("views/utils/dom/index.md")),
               },
               {
                 name: "String",
                 path: "/utils/string",
-                component: loadabled(() => import("views/utils/string")),
+                component: loadabled(() => import("views/utils/string/index.md")),
               },
               {
                 name: "Object",
                 path: "/utils/object",
-                component: loadabled(() => import("views/utils/object")),
+                component: loadabled(() => import("views/utils/object/index.md")),
               },
               {
                 name: "Utils",
                 path: "/utils/utils",
-                component: loadabled(() => import("views/utils/utils")),
+                component: loadabled(() => import("views/utils/utils/index.md")),
               },
-              { path: "/", exact: true, redirect: "/utils/array" },
+              { path: "/utils", exact: true, redirect: "/utils/type" },
             ]
           },
           {
             path: "/vue",
             name: "vue",
-            component: loadabled(() => import("views/vue"))
+            component: loadabled(() => import("views/vue/index.md"))
           },
           {
             path: "/nginx",
@@ -91,14 +91,27 @@ export const routes: RouteTypes[] = [
               {
                 path: "/nginx/install",
                 name: "install",
-                component: loadabled(() => import("views/nginx/install")),
+                component: loadabled(() => import("views/nginx/install/index.md")),
               },
               {
                 path: "/nginx/simple",
                 name: "simple",
-                component: loadabled(() => import("views/nginx/simple")),
+                component: loadabled(() => import("views/nginx/simple/index.md")),
               },
               { path: "/nginx", exact: true, redirect: "/nginx/install" },
+            ]
+          },
+          {
+            path: "/react",
+            name: 'react',
+            component: loadabled(() => import('views/react')),
+            routes: [
+              {
+                path: "/react/base",
+                name: 'Base',
+                component: loadabled(() => import('views/react/usage/index.md'))
+              },
+              { path: "/react", exact: true, redirect: "/react/base" },
             ]
           },
           { path: "/", exact: true, redirect: "/node/npm" },

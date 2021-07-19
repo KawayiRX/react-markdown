@@ -13,11 +13,22 @@ module.exports = override(
             modifyVars: {
                 '@primary-color': '#fff', // for example, you use Ant Design to change theme color.
             },
-            cssLoaderOptions: {
-                modules: true
-            }, // .less file used css-loader option, not all CSS file.
-            modules: true,
-            localIdentName: '[path][name]__[local]--[hash:base64:5]',
         },
     }),
+
+    config => {
+
+        config.node = {
+            fs: "empty"
+        }
+
+        const loaders = config.module.rules.find(rule => Array.isArray(rule.oneOf)).oneOf;
+
+        loaders.unshift({
+            test: /\.mdx?$/,
+            use: ['babel-loader', '@mdx-js/loader'],
+        })
+
+        return config
+    }
 );
