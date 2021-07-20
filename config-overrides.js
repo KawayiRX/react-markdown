@@ -1,4 +1,5 @@
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+
 module.exports = override(
     // 在这里使用 customize-cra 里的一些函数来修改配置
     fixBabelImports('import', {
@@ -29,7 +30,11 @@ module.exports = override(
 
         loaders.unshift({
             test: /\.mdx?$/,
-            use: ['babel-loader', '@mdx-js/loader'],
+            use: ['babel-loader', {
+                loader: '@mdx-js/loader',
+                options: {
+                }
+            }],
         })
 
         return config

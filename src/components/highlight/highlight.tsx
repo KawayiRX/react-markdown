@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { transform } from '@babel/core'
 import { mdx } from '@mdx-js/react'
-import { Button } from 'antd'
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
-import theme from "prism-react-renderer/themes/duotoneLight";
+import AntDesign from './ant-design'
+import { LiveEditor } from 'react-live'
 import provideTheme from 'prism-react-renderer/themes/palenight'
-import { Pre, Line, LineContent, LineNo, Preview, Editor, PreviewContainer } from 'components/highlight/styles'
+import { Pre, Line, LineContent, LineNo, StyledEditor, StyledError, StyledPreview, StyledProvider, LiveWrapper } from 'components/highlight/styles'
 
 interface IHighlightProps {
     children?: string;
@@ -19,19 +18,20 @@ interface IHighlightProps {
 
 const IHighlight: React.FC<IHighlightProps> = props => {
 
-    const { className = '', live, children = "", render, noInline } = props;
+    const { className = '', live, children = "", render, noInline = true } = props;
 
     const lang: any = className.replace(/language-/, '')
 
-    if (live) {
+    if (live || render) {
         return (
-            <div style={{ marginTop: 20 }}>
-                <LiveProvider
-                    theme={provideTheme}
-                    style={{ border: "none", scrollbarWidth: "none" }}
-                    code={children.trim()}
-                    noInline={noInline}
-                    transformCode={code => {
+            <StyledProvider
+                theme={provideTheme}
+                style={{ border: "none" }}
+                code={children.trim()}
+                noInline={noInline}
+                disabled={!!render}
+                transformCode={code => {
+                    try {
                         const transformed = transform(code, {
                             plugins: [
                                 require('@babel/plugin-syntax-jsx'),
@@ -42,35 +42,26 @@ const IHighlight: React.FC<IHighlightProps> = props => {
                             ]
                         })?.code
                         return transformed || ''
-                    }}
-                    scope={{ mdx, styled, Button }}
-                >
-                    <PreviewContainer>
-                        <Editor>
-                            <LiveEditor />
-                            <LiveError />
-                        </Editor>
-                        <Preview>
-                            <LivePreview />
-                        </Preview>
-                    </PreviewContainer>
-                </LiveProvider>
-            </div>
-        )
-    }
+                    } catch (error) {
+                        return ''
+                    }
+                }}
+                scope={{ mdx, styled, ...AntDesign, ...React }}
+            >
+                <LiveWrapper>
+                    <StyledEditor>
+                        <LiveEditor />
+                    </StyledEditor>
+                    <StyledPreview />
+                </LiveWrapper>
 
-    if (render) {
-        return (
-            <div style={{ marginTop: '40px' }}>
-                <LiveProvider code={children}>
-                    <LivePreview />
-                </LiveProvider>
-            </div>
+                <StyledError />
+            </StyledProvider>
         )
     }
 
     return (
-        <Highlight {...defaultProps} code={children} language={lang} theme={theme}>
+        <Highlight {...defaultProps} code={children} language={lang} theme={provideTheme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <Pre className={className} style={style}>
                     {tokens.slice(0, tokens.length - 1).map((line, i) => {

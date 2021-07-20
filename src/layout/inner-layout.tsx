@@ -13,7 +13,7 @@ interface InnerLayoutProps {
 
 const InnerLayout: React.FC<InnerLayoutProps> = props => {
 
-    const { children, route } = props
+    const { route } = props
 
     return (
         <Layout>

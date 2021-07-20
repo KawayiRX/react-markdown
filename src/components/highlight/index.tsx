@@ -1,10 +1,11 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import Highlight from 'components/highlight/highlight'
-import { H1 } from 'components/highlight/styles'
+import { H1, H2 } from 'components/highlight/styles'
 
 const components = {
     h1: (props: any) => <H1 {...props} />,
+    h2: (props: any) => <H2 {...props} />,
     code: (props: any) => {
         return <Highlight {...props} />
     }

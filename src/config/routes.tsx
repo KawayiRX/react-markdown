@@ -107,16 +107,16 @@ export const routes: RouteTypes[] = [
             component: loadabled(() => import('views/react')),
             routes: [
               {
-                path: "/react/basic",
+                path: "/react/base",
                 name: 'Base',
-                component: loadabled(() => import('views/react/basic/index.md'))
+                component: loadabled(() => import('views/react/base/index.md'))
               },
               {
-                path: "/react/usage",
-                name: 'Usage',
-                component: loadabled(() => import('views/react/usage/index.md'))
+                path: "/react/markdown",
+                name: 'Markdown',
+                component: loadabled(() => import('views/react/markdown/index.md'))
               },
-              { path: "/react", exact: true, redirect: "/react/basic" },
+              { path: "/react", exact: true, redirect: "/react/base" },
             ]
           },
           { path: "/", exact: true, redirect: "/node/npm" },
