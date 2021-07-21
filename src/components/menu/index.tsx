@@ -9,7 +9,7 @@ interface SliderType {
   routes?: RouteTypes[];
   collapsed?: boolean;
   store?: any;
-  mode?: 'horizontal' | 'inline'
+  mode?: 'horizontal' | 'inline';
 }
 
 const Slider: React.FC<SliderType> = (props) => {
@@ -40,10 +40,14 @@ const Slider: React.FC<SliderType> = (props) => {
         );
       });
 
+  const handleSelect = (e: any) => {
+
+  }
+
   return (
     // <Layout.Sider trigger={null} collapsible theme="light">
     // <div className="logo" />
-    <Menu theme="light" mode={mode} defaultActiveFirst defaultSelectedKeys={[routes[0]?.path]}>
+    <Menu theme="light" mode={mode} defaultActiveFirst defaultSelectedKeys={[routes[0]?.path]} onSelect={handleSelect}>
       {renderMenuItem(routes || [])}
     </Menu>
     // </Layout.Sider>

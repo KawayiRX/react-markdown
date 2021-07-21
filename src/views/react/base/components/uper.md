@@ -2,19 +2,27 @@
 ```jsx render=true
 
 const Show = props => {
-    return <Typography.Text danger>{`Props message ${props.message}`}</Typography.Text>
+    return <Typography.Title danger>{`Props, value ${props.value}`}</Typography.Title>
 }
 
 const Write = props => {
 
-    return <Input />
+    return <Input onChange={props.handleChangeValue} value={props.value}/>
 }
 
-function BoilingVerdict(props) {
-  if (props.celsius >= 100) {
-    return <p>The water would boil.</p>;
+function BoilingVerdict() {
+
+  const [value, setValue] = useState('')
+
+  const handleChangeValue = e => {
+      setValue(e.target.value)
   }
-  return <p>The water would not boil.</p>;
+  return (
+    <>
+      <Write handleChangeValue={handleChangeValue} value={value}/>
+      <Show value={value}/>
+    </>
+  )
 }
 
 render(

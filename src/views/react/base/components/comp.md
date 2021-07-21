@@ -1,3 +1,28 @@
+  * 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
+
+  <Alert
+      message="注意： 组件名称必须以大写字母开头。"
+      description="React 会将以小写字母开头的组件视为原生 DOM 标签。"
+      type="warning"
+      showIcon
+  />
+
+
+```jsx live=true noInline=true
+
+const demo = () => {
+
+  return (
+    <div>Demo</div>
+  )
+}
+
+render (
+  <demo />
+)
+
+```
+
 * React中创建组件分为两种方式（class, function）
 * 最初16.8以前创建组件的方式都是class，因为函数组件没有自己的状态，通常函数组件都是作为UI组件被使用（修改UI通过Props）。
 * class组件的状态挂载在this上

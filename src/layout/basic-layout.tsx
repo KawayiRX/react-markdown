@@ -11,10 +11,11 @@ interface BasicLayoutProps {
 const { Content, Header } = Layout;
 
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
+
   const { children, route } = props;
+
   return (
     <Layout style={{ height: "100%" }}>
-      {/* <Slider routes={route.routes} /> */}
       <Header style={{ background: "#fff" }}><Slider routes={route.routes} /> </Header>
       <Layout>
         <Content

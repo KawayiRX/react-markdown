@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout } from 'antd'
 import Highlight from 'components/highlight'
 import Menu from 'components/menu'
+// import Anchor from 'components/Anchor'
 import { RouteTypes } from 'config/routes'
 import './index.less'
 
@@ -14,7 +15,6 @@ interface InnerLayoutProps {
 const InnerLayout: React.FC<InnerLayoutProps> = props => {
 
     const { route } = props
-
     return (
         <Layout>
             <Sider style={{ background: "#fff" }}>
