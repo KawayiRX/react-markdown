@@ -7,6 +7,7 @@ import {Alert} from 'antd'
     description="React 会将以小写字母开头的组件视为原生 DOM 标签。"
     type="warning"
     showIcon
+    style={{width: "50%"}}
 />
 
 

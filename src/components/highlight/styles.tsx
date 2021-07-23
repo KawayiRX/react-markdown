@@ -34,9 +34,14 @@ export const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
   padding: 0.5em;
+  width: 50%;
   overflow: scroll;
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
 `;
+
+export const Li = styled.li`
+  max-width: ${polished.rem(800)};
+`
 
 export const Line = styled.div`
   display: table-row;

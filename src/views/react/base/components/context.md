@@ -84,6 +84,7 @@ render (
   description="当Provider组件重新渲染的时候，它的所有下级组件都会重新渲染（因为每次重新渲染都会赋值一个新的对象）。为了避免不必要的渲染，可以将Provider的value属性保存到组件的State中"
   type="warning"
   showIcon
+  style={{width: "50%"}}
 />
 
 ```jsx
@@ -134,5 +135,135 @@ MyContext.displayName = 'MyDisplayName';
 
 <MyContext.Provider> // "MyDisplayName.Provider" 在 DevTools 中
 <MyContext.Consumer> // "MyDisplayName.Consumer" 在 DevTools 中
+
+```
+
+```jsx render=true
+const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee',
+  },
+  dark: {
+    foreground: '#ffffff',
+    background: '#222222',
+  },
+};
+
+const ThemeContext = React.createContext(
+  themes.dark // 默认值
+);
+
+
+class ThemedButton extends React.Component {
+  render() {
+    let props = this.props;
+    let theme = this.context;
+    return (
+      <button
+        {...props}
+        style={{backgroundColor: theme.background}}
+      />
+    );
+  }
+}
+ThemedButton.contextType = ThemeContext;
+
+
+function Toolbar(props) {
+  return (
+    <ThemedButton onClick={props.changeTheme}>
+      Change Theme
+    </ThemedButton>
+  );
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      theme: themes.light,
+    };
+
+    this.toggleTheme = () => {
+      this.setState(state => ({
+        theme:
+          state.theme === themes.dark
+            ? themes.light
+            : themes.dark,
+      }));
+    };
+  }
+
+  render() {
+    // 在 ThemeProvider 内部的 ThemedButton 按钮组件使用 state 中的 theme 值，
+    // 而外部的组件使用默认的 theme 值
+    return (
+      <div>
+        <ThemeContext.Provider value={this.state.theme}>
+          <Toolbar changeTheme={this.toggleTheme} />
+        </ThemeContext.Provider>
+        <div>
+          <ThemedButton />
+        </div>
+      </div>
+    );
+  }
+}
+
+render (
+  <App />
+)
+
+```
+
+## 消费多个Context
+```jsx
+// Theme context，默认的 theme 是 “light” 值
+const ThemeContext = React.createContext('light');
+
+// 用户登录 context
+const UserContext = React.createContext({
+  name: 'Guest',
+});
+
+class App extends React.Component {
+  render() {
+    const {signedInUser, theme} = this.props;
+
+    // 提供初始 context 值的 App 组件
+    return (
+      <ThemeContext.Provider value={theme}>
+        <UserContext.Provider value={signedInUser}>
+          <Layout />
+        </UserContext.Provider>
+      </ThemeContext.Provider>
+    );
+  }
+}
+
+function Layout() {
+  return (
+    <div>
+      <Sidebar />
+      <Content />
+    </div>
+  );
+}
+
+// 一个组件可能会消费多个 context
+function Content() {
+  return (
+    <ThemeContext.Consumer>
+      {theme => (
+        <UserContext.Consumer>
+          {user => (
+            <ProfilePage user={user} theme={theme} />
+          )}
+        </UserContext.Consumer>
+      )}
+    </ThemeContext.Consumer>
+  );
+}
 
 ```

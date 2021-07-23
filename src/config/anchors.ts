@@ -27,7 +27,11 @@ const anchor: Anchor = {
         {
             id: 'context',
             title: "Context"
-        }
+        },
+        {
+            id: 'error',
+            title: "Error Boundaries"
+        },
     ],
     "/react": [
         {
@@ -53,7 +57,11 @@ const anchor: Anchor = {
         {
             id: 'context',
             title: "Context"
-        }
+        },
+        {
+            id: 'error',
+            title: "Error Boundaries"
+        },
     ],
 }
 

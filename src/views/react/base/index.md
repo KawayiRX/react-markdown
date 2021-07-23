@@ -5,6 +5,7 @@ import UperState from './components/uper.md'
 import IContext from './components/context.md'
 import Show from './components/show.md'
 import Jsx from './components/jsx.md'
+import ErrorBoundaries from './components/error-boundaries.md'
 
 <H1 id="jsx">
   React 是一个用于构建用户界面的 JavaScript 库。（单项数据， 不可变数据）
@@ -46,3 +47,7 @@ import Jsx from './components/jsx.md'
 </H1>
 
 <IContext/>
+
+<H1 id="error">
+  ErrorBoundaries
+</H1>
