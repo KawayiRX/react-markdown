@@ -27,9 +27,6 @@ import ErrorBoundaries from './components/error-boundaries.md'
 
 <Copm />
 
-  * React中组件的Props属性是只读的，不能修改Props的属性（React数据流向是从上至下）
-  * Props 的 默认值是**true**
-
 <H1 id="event">
   事件处理
 </H1>
@@ -45,9 +42,9 @@ import ErrorBoundaries from './components/error-boundaries.md'
 <H1 id="context">
    Context (为组件提供跨层级传递状态的能力)
 </H1>
-
 <IContext/>
 
 <H1 id="error">
   ErrorBoundaries
 </H1>
+<ErrorBoundaries />

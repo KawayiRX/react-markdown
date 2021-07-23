@@ -1,4 +1,4 @@
-import {Alert} from 'antd'
+import {Alert, Typography} from 'antd'
 
 * 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
 
@@ -238,3 +238,47 @@ render(
 )
 
 ```
+
+* 高阶组件(HOC)
+    * 高阶组件是React受函数式编程影响而实现的一种组件逻辑复用的设计模式。
+    * ** 高阶组件是参数为组件，返回值为新组件的函数。HOC是一个纯函数，不会对传入的组件进行修改，只是透传Props**
+
+* <Typography.Text type="danger" strong>不要修改原始组件。使用组合去增加行为</Typography.Text>
+```jsx
+function logProps(InputComponent) {
+  InputComponent.prototype.componentDidUpdate = function(prevProps) {
+    console.log('Current props: ', this.props);
+    console.log('Previous props: ', prevProps);
+  };
+  // 返回原始的 input 组件，暗示它已经被修改。
+  return InputComponent;
+}
+
+// 每次调用 logProps 时，增强组件都会有 log 输出。这样虽然可以实现，但是之后使用的相同生命周期会被覆盖。
+const EnhancedComponent = logProps(InputComponent);
+
+// 不应该直接对传入组件进行修改 而是使用组合x形成一个新的组件
+
+function logProps(WrappedComponent) {
+  return class extends React.Component {
+    componentDidUpdate(prevProps) {
+      console.log('Current props: ', this.props);
+      console.log('Previous props: ', prevProps);
+    }
+    render() {
+      // 将 input 组件包装在容器中，而不对其进行修改。Good!
+      return <WrappedComponent {...this.props} />;
+    }
+  }
+}
+
+```
+
+<Alert
+    message="注意： "
+    description="React中组件的Props属性是只读的，不能修改Props的属性（React数据流向是从上至下）, Props 的 默认值是true"
+    type="warning"
+    showIcon
+    style={{width: "50%"}}
+/>
+

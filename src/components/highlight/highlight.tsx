@@ -6,7 +6,7 @@ import { mdx } from '@mdx-js/react'
 import AntDesign from './ant-design'
 import { LiveEditor } from 'react-live'
 import provideTheme from 'prism-react-renderer/themes/palenight'
-import { Pre, Line, LineContent, LineNo, StyledEditor, StyledError, StyledPreview, StyledProvider, LiveWrapper } from 'components/highlight/styles'
+import { Pre, Line, LineContent, LineNo, StyledEditor, StyledError, StyledPreview, StyledProvider, LiveWrapper, PreWrapper } from 'components/highlight/styles'
 
 interface IHighlightProps {
     children?: string;
@@ -64,18 +64,20 @@ const IHighlight: React.FC<IHighlightProps> = props => {
         <Highlight {...defaultProps} code={children} language={lang} theme={provideTheme}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <Pre className={className} style={style}>
-                    {tokens.slice(0, tokens.length - 1).map((line, i) => {
-                        return (
-                            <Line {...getLineProps({ line, key: i })}>
-                                <LineNo>{i + 1}</LineNo>
-                                <LineContent>
-                                    {line.map((token, key) => (
-                                        <span {...getTokenProps({ token, key })} />
-                                    ))}
-                                </LineContent>
-                            </Line>
-                        )
-                    })}
+                    <PreWrapper>
+                        {tokens.slice(0, tokens.length - 1).map((line, i) => {
+                            return (
+                                <Line {...getLineProps({ line, key: i })}>
+                                    <LineNo>{i + 1}</LineNo>
+                                    <LineContent>
+                                        {line.map((token, key) => (
+                                            <span {...getTokenProps({ token, key })} />
+                                        ))}
+                                    </LineContent>
+                                </Line>
+                            )
+                        })}
+                    </PreWrapper>
                 </Pre>
             )}
         </Highlight>

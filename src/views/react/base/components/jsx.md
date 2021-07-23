@@ -32,9 +32,7 @@
         return (
           <>
             {
-              arr.map((item, index) => {
-                return index === 1 ? <div key={item.toString()}>{`${2 + 2}表达式`}</div> : <div key={item.toString()}>{items}</div>
-              })
+              arr.map((item, index) => index === 1 ? <div key={item.toString()}>{`${2 + 2}表达式`}</div> : <div key={item.toString()}>{items}</div>)
             }
           </>
       )
@@ -61,27 +59,43 @@
   const element = <img src={user.avatarUrl}></img>;
 ```
 
-  * ## JSX 表示对象
-    * Babel 会把 JSX 转译成一个名为 React.createElement() 函数调用。  
+  * ## JSX 仅仅只是 React.createElement(component, props, ...children) 函数的语法糖。
 ```jsx
-  const element = (
-    <h1 className="greeting">
-      Hello, world!
-    </h1>
-  );
+<MyButton color="blue" shadowSize={2}>
+  Click Me
+</MyButton>
 
-  const element = React.createElement(
-    'h1', // tag
-    {className: 'greeting'}, // [rp[s]]
-    'Hello, world!' // children
-  );
+// 编译： 
+React.createElement(
+  MyButton,
+  {color: 'blue', shadowSize: 2},
+  'Click Me'
+)
+// 如果没有子节点,可以自闭合
+<div className="sidebar" />
 
-  // React.createElement() 会预先执行一些检查，以帮助你编写无错代码，但实际上它创建了一个这样的对象， 这是简化过的结构
-  const element = {
-    type: 'h1',
-    props: {
-      className: 'greeting',
-      children: 'Hello, world!'
-    }
-  };
+// 编译： 
+React.createElement(
+  'div',
+  {className: 'sidebar'}
+)
+```
+
+* **JSX 标签的第一部分指定了 React 元素的类型。**
+  * 如果是自定义组件，首字母必须大写，因为这些标签会直接被编译为对应命名变量的对象引用。
+
+* **React 必须在作用域内（React17后JSX改为运行时编译可以省去这一步）**
+* **在 JSX 类型中使用点语法**
+```jsx
+import React from 'react';
+
+const MyComponents = {
+  DatePicker: function DatePicker(props) {
+    return <div>Imagine a {props.color} datepicker here.</div>;
+  }
+}
+
+function BlueDatePicker() {
+  return <MyComponents.DatePicker color="blue" />;
+}
 ```

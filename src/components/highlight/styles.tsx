@@ -39,8 +39,19 @@ export const Pre = styled.pre`
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
 `;
 
+export const PreWrapper = styled.div`
+  max-height: ${polished.rem(350)};
+  overflow: auto;
+  &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
+`
+
+export const P = styled.p`
+  margin: 5px 0;
+`
+
 export const Li = styled.li`
   max-width: ${polished.rem(800)};
+  margin: 7px 0;
 `
 
 export const Line = styled.div`
