@@ -33,7 +33,7 @@
           <>
             {
               arr.map((item, index) => {
-                return index === 1 ? <div>{`${2 + 2}表达式`}</div> : <div key={item.toString()}>{items}</div>
+                return index === 1 ? <div key={item.toString()}>{`${2 + 2}表达式`}</div> : <div key={item.toString()}>{items}</div>
               })
             }
           </>

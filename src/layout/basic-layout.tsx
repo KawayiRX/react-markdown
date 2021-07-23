@@ -2,13 +2,11 @@ import React from "react";
 import { Layout } from "antd";
 import { RouteTypes } from "config/routes";
 import Slider from "components/menu";
-import './index.less'
+import { OuterContent, CustomHeader } from './styles'
 
 interface BasicLayoutProps {
   route: RouteTypes;
 }
-
-const { Content, Header } = Layout;
 
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 
@@ -16,18 +14,12 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
 
   return (
     <Layout style={{ height: "100%" }}>
-      <Header style={{ background: "#fff" }}><Slider routes={route.routes} /> </Header>
+      <CustomHeader><Slider routes={route.routes} /> </CustomHeader>
       <Layout>
-        <Content
-          style={{
-            margin: "24px 16px",
-            background: "#fff",
-            padding: 24,
-            minHeight: 280,
-          }}
+        <OuterContent
         >
           {children}
-        </Content>
+        </OuterContent>
       </Layout>
     </Layout>
   );

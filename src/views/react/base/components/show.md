@@ -9,13 +9,13 @@ ReactDOM.render(element, document.getElementById('root'));
    * React元素遵循不可变原则, 只要创建就不会再改变。所以更新UI的唯一途径就是生成新的元素传入ReactDOM.render()
 ```jsx
 function tick() {
-  const element = (
+  const Demo = (
     <div>
       <h1>Hello, world!</h1>
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
-  ReactDOM.render(element, document.getElementById('root'));
+  ReactDOM.render(Demo, document.getElementById('root'));
 }
 setInterval(tick, 1000);  
 

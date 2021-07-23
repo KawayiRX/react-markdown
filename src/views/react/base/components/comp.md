@@ -1,16 +1,18 @@
-  * 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
+import {Alert} from 'antd'
 
-  <Alert
-      message="注意： 组件名称必须以大写字母开头。"
-      description="React 会将以小写字母开头的组件视为原生 DOM 标签。"
-      type="warning"
-      showIcon
-  />
+* 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
+
+<Alert
+    message="注意： 组件名称必须以大写字母开头。"
+    description="React 会将以小写字母开头的组件视为原生 DOM 标签。"
+    type="warning"
+    showIcon
+/>
 
 
 ```jsx live=true noInline=true
 
-const demo = () => {
+const Demo = () => {
 
   return (
     <div>Demo</div>
@@ -18,7 +20,7 @@ const demo = () => {
 }
 
 render (
-  <demo />
+  <Demo />
 )
 
 ```
@@ -47,8 +49,8 @@ class ClassComponent extends React.Component {
     /*
         react16 以后做了很大的改变，对 diff 算法进行了重写，从总体看，主要是把一次计算，改变为多次计算，在浏览器有高级任务时，暂停计算。
     */
-    UNSAFE_componentWillMount(){}
-    UNSAFE_componentWillUpdate(nextProps, nextState){}
+    // UNSAFE_componentWillMount(){}
+    // UNSAFE_componentWillUpdate(nextProps, nextState){}
 
     static getDerivedStateFromError(error) {
         // 当组件发生错误的时候调用 可以在这里处理错误逻辑一般用于错误页面展示
@@ -121,7 +123,7 @@ const HooksA = () => {
     const [message, setMessage] = useState('hello')
 
     return (
-        <Button onClick={() => setMessage("world")} type="primary" danger>{message}</Button>
+        <Button onClick={() => setMessage("world")} type="primary">{message}</Button>
     )
 }
 
@@ -151,7 +153,7 @@ class Demo extends React.Component {
     }
 
     render() {
-        return <Button onClick={this.handleChangeCount} type="primary" danger>{this.state.count}</Button>
+        return <Button onClick={this.handleChangeCount} type="primary">{this.state.count}</Button>
     }
 }
 
@@ -192,7 +194,7 @@ class Child2 extends PureComponent {
 const Child3 = memo(() => {
     console.log('child3, render');
      return (
-            <div>child3</div>
+        <div>child3</div>
     )
 })
 
@@ -221,7 +223,7 @@ class Demo extends Component {
 
         return (
             <>
-                <Button type="primary" danger onClick={this.handleChangeMessage}>{message}</Button>
+                <Button type="primary" onClick={this.handleChangeMessage}>{message}</Button>
                 <Child1 />
                 <Child2 />
                 <Child3 />

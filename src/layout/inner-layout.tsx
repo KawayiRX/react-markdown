@@ -1,29 +1,36 @@
 import React from 'react'
 import { Layout } from 'antd'
 import Highlight from 'components/highlight'
+import Anchor from 'components/Anchor'
 import Menu from 'components/menu'
-// import Anchor from 'components/Anchor'
 import { RouteTypes } from 'config/routes'
-import './index.less'
-
-const { Sider, Content } = Layout
+import { anchor } from 'config/anchors'
+import { AnchorWrapper, CustomContent, CustomSider } from './styles'
 
 interface InnerLayoutProps {
     route: RouteTypes
 }
 
+// export const AnchorContext = React.createContext(anchor['/react/base'])
+
 const InnerLayout: React.FC<InnerLayoutProps> = props => {
 
     const { route } = props
+
     return (
         <Layout>
-            <Sider style={{ background: "#fff" }}>
+            <CustomSider>
                 <Menu routes={route.routes} mode="inline" />
-            </Sider>
-            <Content style={{ background: "#fff", paddingLeft: 20 }} className="inner-layout">
+            </CustomSider>
+            <CustomContent>
+                {/* <AnchorContext.Provider value={anchor[route.path]}> */}
                 <Highlight {...props} />
-            </Content>
-        </Layout>
+                {/* </AnchorContext.Provider> */}
+                <AnchorWrapper>
+                    <Anchor anchor={anchor[route.path]} />
+                </AnchorWrapper>
+            </CustomContent>
+        </Layout >
     )
 }
 

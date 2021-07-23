@@ -2,7 +2,7 @@
 ```jsx render=true
 
 const Show = props => {
-    return <Typography.Title danger>{`Props, value ${props.value}`}</Typography.Title>
+    return <Typography.Title>{`Props, value ${props.value}`}</Typography.Title>
 }
 
 const Write = props => {
