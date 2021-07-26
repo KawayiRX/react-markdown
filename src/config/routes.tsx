@@ -23,6 +23,24 @@ export const routes: RouteTypes[] = [
         component: BasicLayout,
         routes: [
           {
+            path: "/react",
+            name: 'react',
+            component: loadabled(() => import('views/react')),
+            routes: [
+              {
+                path: "/react/base",
+                name: 'Base',
+                component: loadabled(() => import('views/react/base/index.md'))
+              },
+              {
+                path: "/react/markdown",
+                name: 'Markdown',
+                component: loadabled(() => import('views/react/markdown/index.md'))
+              },
+              { path: "/react", exact: true, redirect: "/react/base" },
+            ]
+          },
+          {
             path: "/node",
             name: "node",
             component: loadabled(() => import("views/node")),
@@ -106,25 +124,8 @@ export const routes: RouteTypes[] = [
               { path: "/nginx", exact: true, redirect: "/nginx/install" },
             ]
           },
-          {
-            path: "/react",
-            name: 'react',
-            component: loadabled(() => import('views/react')),
-            routes: [
-              {
-                path: "/react/base",
-                name: 'Base',
-                component: loadabled(() => import('views/react/base/index.md'))
-              },
-              {
-                path: "/react/markdown",
-                name: 'Markdown',
-                component: loadabled(() => import('views/react/markdown/index.md'))
-              },
-              { path: "/react", exact: true, redirect: "/react/base" },
-            ]
-          },
-          { path: "/", exact: true, redirect: "/node/npm" },
+
+          { path: "/", exact: true, redirect: "/react/base" },
           // { path: "*", exact: true, redirect: "/exception/404" }
         ],
       },

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import { transform } from '@babel/core'
 import { mdx } from '@mdx-js/react'
 import AntDesign from './ant-design'
@@ -20,7 +20,7 @@ const IHighlight: React.FC<IHighlightProps> = props => {
 
     const { className = '', live, children = "", render, noInline = true } = props;
 
-    const lang = className.replace(/language-/, '')
+    const lang: any = className.replace(/language-/, '')
 
     if (live || render) {
         return (
