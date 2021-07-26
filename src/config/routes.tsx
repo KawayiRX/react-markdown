@@ -32,6 +32,11 @@ export const routes: RouteTypes[] = [
                 name: "npm",
                 component: loadabled(() => import("views/node/npm/index.md")),
               },
+              // {
+              //   path: "/node/prettier",
+              //   name: "prettier",
+              //   component: loadabled(() => import("views/node/prettier/index.md")),
+              // },
               { path: "/node", exact: true, redirect: "/node/npm" },
             ]
           },
