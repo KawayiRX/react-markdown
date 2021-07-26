@@ -5,6 +5,8 @@ import UperState from './components/uper.md'
 import IContext from './components/context.md'
 import Show from './components/show.md'
 import Jsx from './components/jsx.md'
+import Refs from './components/refs.md'
+import RenderProps from './components/render.md'
 import ErrorBoundaries from './components/error-boundaries.md'
 
 <H1 id="jsx">
@@ -48,3 +50,15 @@ import ErrorBoundaries from './components/error-boundaries.md'
   ErrorBoundaries
 </H1>
 <ErrorBoundaries />
+
+<H1 id="refs">
+  Refs转发
+</H1>
+
+<Refs />
+
+<H1 id="renderProps">
+  Render Props
+</H1>
+
+<RenderProps />

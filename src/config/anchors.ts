@@ -36,6 +36,10 @@ const anchor: Anchor = {
             id: 'refs',
             title: "Refs"
         },
+        {
+            id: 'renderProps',
+            title: "Render Props"
+        },
     ],
     "/react": [
         {
@@ -69,6 +73,10 @@ const anchor: Anchor = {
         {
             id: 'refs',
             title: "Refs"
+        },
+        {
+            id: 'renderProps',
+            title: "Render Props"
         },
     ],
 }

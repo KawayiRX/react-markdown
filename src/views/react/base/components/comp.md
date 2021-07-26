@@ -76,11 +76,11 @@ class ClassComponent extends React.Component {
 
     componentDidMount() {
         console.log('componentDidMount');
-        this.timer = setInterval(() => {
-            this.setState({
-                count: this.state.count + 1
-            })
-        }, 1000)
+        // this.timer = setInterval(() => {
+        //     this.setState({
+        //         count: this.state.count + 1
+        //     })
+        // }, 1000)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){

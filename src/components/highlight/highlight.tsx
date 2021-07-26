@@ -20,7 +20,7 @@ const IHighlight: React.FC<IHighlightProps> = props => {
 
     const { className = '', live, children = "", render, noInline = true } = props;
 
-    const lang: any = className.replace(/language-/, '')
+    const lang = className.replace(/language-/, '')
 
     if (live || render) {
         return (
