@@ -1,10 +1,8 @@
-import React from 'react'
-import Nginx from './index.md'
+import React from 'react';
+import Nginx from './index.md';
 
-const BaseNginx = () => {
-    return (
-        <Nginx />
-    )
-}
+const BaseNginx = () => (
+  <Nginx />
+);
 
-export default BaseNginx
+export default BaseNginx;

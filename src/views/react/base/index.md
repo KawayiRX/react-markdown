@@ -13,7 +13,7 @@ import ErrorBoundaries from './components/error-boundaries.md'
   React 是一个用于构建用户界面的 JavaScript 库。（单项数据， 不可变数据）
 </H1>
 
-* ## JSX 
+- ## JSX
 
 <Jsx/>
 

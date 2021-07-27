@@ -1,5 +1,5 @@
 export const Lines = () => {
-    return <div style={{margin: 40}} />
+return <div style={{margin: 40}} />
 }
 
 # Nginx 是一款轻量级的**网页服务器、反向代理服务器**。相较于 Apache、lighttpd 具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务
@@ -10,6 +10,7 @@ export const Lines = () => {
     cd /usr/local/nginx
     wget -c https://nginx.org/download/nginx-1.10.1.tar.gz
 ```
+
 <Lines />
 
 2. 安装 gcc(安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境)

@@ -1,6 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 import * as polished from 'polished';
-import { LiveProvider, LiveError, LivePreview } from 'react-live'
+import { LiveProvider, LiveError, LivePreview } from 'react-live';
+
 export const background = '#42374a';
 export const foreground = '#f8f8f2';
 export const red = '#ff5555';
@@ -12,23 +13,23 @@ export const H1 = styled.h1`
     font-size: 20px;
     font-weight: bolder;
     margin: 10px 0;
-`
+`;
 
 export const H2 = styled.h1`
     font-size: 18px;
     font-weight: bolder;
     margin: 5px 0;
-`
+`;
 export const H3 = styled.h1`
     font-size: 16px;
     font-weight: bolder;
     margin: 5px 0;
-`
+`;
 export const H4 = styled.h1`
     font-size: 14px;
     font-weight: bolder;
     margin: 5px 0;
-`
+`;
 
 export const Pre = styled.pre`
   text-align: left;
@@ -43,16 +44,16 @@ export const PreWrapper = styled.div`
   max-height: ${polished.rem(350)};
   overflow: auto;
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
-`
+`;
 
 export const P = styled.p`
   margin: 5px 0;
-`
+`;
 
 export const Li = styled.li`
   max-width: ${polished.rem(800)};
   margin: 7px 0;
-`
+`;
 
 export const Line = styled.div`
   display: table-row;

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Redirect,
-  Route
-} from "react-router-dom";
-import { RouteTypes, routes } from "config/routes";
+  Route,
+} from 'react-router-dom';
+import { RouteTypes, routes } from 'config/routes';
 
-const render = (routes: RouteTypes[]) => {
-  if (!routes || !routes.length) return null;
+const render = (initRoutes: RouteTypes[]) => {
+  if (!initRoutes || !initRoutes.length) return null;
   return (
     <Switch>
-      {routes.map((route: RouteTypes, index) => {
+      {initRoutes.map((route: RouteTypes, index) => {
         if (route.redirect) {
           return (
             <Redirect

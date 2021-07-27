@@ -1,15 +1,8 @@
-import React from "react";
+import React from 'react';
 // import {Redirect} from 'react-router-dom';
 
 type SecurityLayoutType = {};
 
-const SecurityLayout: React.FC<SecurityLayoutType> = (props) => {
-  // const isLogin = window.localStorage.getItem('login');
-  // if (!isLogin) {
-  //     return <Redirect to="/user"/>;
-  // }
-  console.log("object");
-  return <div style={{ height: "100%" }}>{props.children}</div>;
-};
+const SecurityLayout: React.FC<SecurityLayoutType> = ({ children }) => <div style={{ height: '100%' }}>{children}</div>;
 
 export default SecurityLayout;
