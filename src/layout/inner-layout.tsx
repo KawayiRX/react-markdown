@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { Layout } from 'antd';
 import Highlight from 'components/highlight';
 import Anchor from 'components/Anchor';
@@ -16,6 +17,8 @@ interface InnerLayoutProps {
 const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
   const { route } = props;
 
+  const local = useLocation();
+
   return (
     <Layout>
       <CustomSider>
@@ -26,7 +29,7 @@ const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
         <Highlight {...props} />
         {/* </AnchorContext.Provider> */}
         <AnchorWrapper>
-          <Anchor anchor={anchor[route.path]} />
+          <Anchor anchor={anchor[local.pathname]} />
         </AnchorWrapper>
       </CustomContent>
     </Layout>
