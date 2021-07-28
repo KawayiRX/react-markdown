@@ -1,9 +1,9 @@
 type Anchor = {
-    [key: string]: { id: string, title: string }[]
+  [key: string]: { id: string, title: string }[]
 }
 
 export const anchor: Anchor = {
-  '/react/base': [
+  '/react/docs': [
     {
       id: 'jsx',
       title: 'JSX',

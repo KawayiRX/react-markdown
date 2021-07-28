@@ -42,7 +42,7 @@ export const routes: RouteTypes[] = [
                 name: 'Markdown',
                 component: loadabled(() => import('views/react/markdown/index.md')),
               },
-              { path: '/react', exact: true, redirect: '/react/base' },
+              { path: '/react', exact: true, redirect: '/react/docs' },
             ],
           },
           {
@@ -111,7 +111,7 @@ export const routes: RouteTypes[] = [
             name: 'vue',
             component: loadabled(() => import('views/vue/index.md')),
           },
-          { path: '/', exact: true, redirect: '/react/base' },
+          { path: '/', exact: true, redirect: '/react/docs' },
           // { path: "*", exact: true, redirect: "/exception/404" }
         ],
       },

@@ -32,6 +32,7 @@ render(<App />);
 - 使用 Context 就可以不必在组件之间层层传递
 
 ```jsx render=true
+
 const ButtonContext = createContext("primary");
 
 class App extends Component {
@@ -56,12 +57,15 @@ function Toolbar(props) {
 }
 
 class ThemedButton extends React.Component {
-  static contextType = ButtonContext;
+
+  // static contextType = ButtonContext;
 
   render() {
     return <Button type={this.context}>Context</Button>;
   }
 }
+
+ThemedButton.contextType = ButtonContext
 
 render(<App />);
 ```

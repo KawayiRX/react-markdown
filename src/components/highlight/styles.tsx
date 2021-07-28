@@ -101,7 +101,7 @@ export const column = css`
 `;
 
 export const StyledEditor = styled.div`
-  background: ${lightGrey};
+  background: #fff;
   font-family: 'Source Code Pro', monospace;
   font-size: ${polished.rem(14)};
   height: ${polished.rem(350)};

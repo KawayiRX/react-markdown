@@ -24,6 +24,7 @@ render(<Demo />);
 - 注意: class 上定义的函数默认 this 并没有指向当前组件需要手动绑定 this
 
 ```jsx render=true noInline=true
+
 function Demo(props) {
   // 当前组件没有自身状态， props进行渲染
   return (
@@ -34,11 +35,14 @@ function Demo(props) {
 }
 
 class ClassComponent extends React.Component {
-  state = {
-    count: 0,
-    timer: null,
-  };
 
+  constructor() {
+    state = {
+      count: 0,
+      timer: null,
+    };
+  }
+  
   // 即将弃用 组件即将渲染 16采用fiber架构后这个生命周期处于调和阶段，这个阶段的可以中断，也就是会执行多次这个生命周期
   /*
         react16 以后做了很大的改变，对 diff 算法进行了重写，从总体看，主要是把一次计算，改变为多次计算，在浏览器有高级任务时，暂停计算。
@@ -69,11 +73,11 @@ class ClassComponent extends React.Component {
 
   componentDidMount() {
     console.log("componentDidMount");
-    // this.timer = setInterval(() => {
-    //     this.setState({
-    //         count: this.state.count + 1
-    //     })
-    // }, 1000)
+    this.timer = setInterval(() => {
+        this.setState({
+            count: this.state.count + 1
+        })
+    }, 1000)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -102,6 +106,7 @@ class ClassComponent extends React.Component {
 }
 
 render(<ClassComponent />);
+
 ```
 
 - 自 16.8React 新增 Hooks 特性之后函数组件随着成为主流（函数组件也可以通过 hooks 管理自己内部状态）。
@@ -125,13 +130,17 @@ render(<HooksA />);
 - 注意：由于 props 和 state 的更新可能会异步进行， 所以不要依赖他们的值进行更新。
 - State 的更新会被合并，React 会把修改的 state 进行合并然后统一更新，所以当修改多次同一属性可能只会更新一次 UI。
 
-```jsx render=true noInline=true
+```jsx render=true
 class Demo extends React.Component {
-  state = {
-    count: 0,
-  };
+  
+  constructor() {
+    this.state = {
+      count: 0,
+    };
+  }
 
-  handleChangeCount = () => {
+  handleChangeCount() {
+    console.log(this.state);
     // 更新对象被合并 （类似于 {...{{count: this.state.count +1}, {count: this.state.count +1}, {count: this.state.count +1}}}）
     // 所以最终只会修改一次
     this.setState({ count: this.state.count + 1 });
@@ -141,7 +150,7 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <Button onClick={this.handleChangeCount} type="primary">
+      <Button onClick={this.handleChangeCount.bind(this)} type="primary">
         {this.state.count}
       </Button>
     );
@@ -180,16 +189,19 @@ const Child3 = memo(() => {
 });
 
 class Demo extends Component {
-  state = {
-    message: "hello",
-  };
+  
+  constructor() {
+    this.state = {
+      message: "hello",
+    }
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     // 当返回了false那就无论如何也不会对UI进行更新
     return false;
   }
 
-  handleChangeMessage = () => {
+  handleChangeMessage(){
     this.setState(
       {
         message: "world",
@@ -205,7 +217,7 @@ class Demo extends Component {
 
     return (
       <>
-        <Button type="primary" onClick={this.handleChangeMessage}>
+        <Button type="primary" onClick={this.handleChangeMessage.bind(this)}>
           {message}
         </Button>
         <Child1 />

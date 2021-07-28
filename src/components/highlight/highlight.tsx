@@ -4,18 +4,19 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 // import { transform } from '@babel/core';
 import { mdx } from '@mdx-js/react';
 import { LiveEditor } from 'react-live';
-import provideTheme from 'prism-react-renderer/themes/palenight';
+// import provideTheme from 'prism-react-renderer/themes/palenight';
+import provideTheme from 'prism-react-renderer/themes/github';
 import {
   Pre, Line, LineContent, LineNo, StyledEditor, StyledError, StyledPreview, StyledProvider, LiveWrapper, PreWrapper,
 } from 'components/highlight/styles';
 import AntDesign from './ant-design';
 
 interface IHighlightProps {
-    children?: string;
-    className?: string;
-    live?: boolean;
-    render?: boolean;
-    noInline?: boolean;
+  children?: string;
+  className?: string;
+  live?: boolean;
+  render?: boolean;
+  noInline?: boolean;
 }
 
 const IHighlight: React.FC<IHighlightProps> = (props) => {
