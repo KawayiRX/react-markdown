@@ -15,6 +15,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:markdown/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -27,6 +28,13 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+  ],
+  overrides: [
+    {
+      // 2. Enable the Markdown processor for all .md files.
+      files: ['**/*.md'],
+      processor: 'markdown/markdown',
+    },
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
