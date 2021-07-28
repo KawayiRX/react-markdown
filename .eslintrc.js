@@ -45,6 +45,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'max-len': ['error', { code: 300 }],
     'import/prefer-default-export': 0,
+    indent: ['error', 2],
     'import/extensions': [
       'error',
       'ignorePackages',

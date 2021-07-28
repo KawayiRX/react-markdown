@@ -32,9 +32,9 @@ function unique3(arr) {
 
 ```js
 Array.prototype.myReverse = function () {
-  var len = this.length;
-  for (var i = 0; i < len; i++) {
-    var temp = this[i];
+  const len = this.length;
+  for (let i = 0; i < len; i++) {
+    const temp = this[i];
     this[i] = this[len - 1 - i];
     this[len - 1 - i] = temp;
   }
@@ -46,10 +46,10 @@ Array.prototype.myReverse = function () {
 
 ```js
 Array.prototype.myForEach = function (func, obj) {
-  var len = this.length;
-  var _this = arguments[1] ? arguments[1] : window;
+  const len = this.length;
+  const _this = arguments[1] ? arguments[1] : window;
   // var _this=arguments[1]||window;
-  for (var i = 0; i < len; i++) {
+  for (let i = 0; i < len; i++) {
     func.call(_this, this[i], i, this);
   }
 };
@@ -59,10 +59,10 @@ Array.prototype.myForEach = function (func, obj) {
 
 ```js
 Array.prototype.myFilter = function (func, obj) {
-  var len = this.length;
-  var arr = [];
-  var _this = arguments[1] || window;
-  for (var i = 0; i < len; i++) {
+  const len = this.length;
+  const arr = [];
+  const _this = arguments[1] || window;
+  for (let i = 0; i < len; i++) {
     func.call(_this, this[i], i, this) && arr.push(this[i]);
   }
   return arr;
@@ -73,10 +73,10 @@ Array.prototype.myFilter = function (func, obj) {
 
 ```js
 Array.prototype.myMap = function (func) {
-  var arr = [];
-  var len = this.length;
-  var _this = arguments[1] || window;
-  for (var i = 0; i < len; i++) {
+  const arr = [];
+  const len = this.length;
+  const _this = arguments[1] || window;
+  for (let i = 0; i < len; i++) {
     arr.push(func.call(_this, this[i], i, this));
   }
   return arr;
@@ -87,10 +87,10 @@ Array.prototype.myMap = function (func) {
 
 ```js
 Array.prototype.myEvery = function (func) {
-  var flag = true;
-  var len = this.length;
-  var _this = arguments[1] || window;
-  for (var i = 0; i < len; i++) {
+  let flag = true;
+  const len = this.length;
+  const _this = arguments[1] || window;
+  for (let i = 0; i < len; i++) {
     if (func.apply(_this, [this[i], i, this]) == false) {
       flag = false;
       break;
@@ -104,9 +104,9 @@ Array.prototype.myEvery = function (func) {
 
 ```js
 Array.prototype.myReduce = function (func, initialValue) {
-  var len = this.length,
-    nextValue,
-    i;
+  const len = this.length;
+  let nextValue;
+  let i;
   if (!initialValue) {
     // 没有传第二个参数
     nextValue = this[0];
@@ -131,11 +131,11 @@ function quickArr(arr) {
   if (arr.length <= 1) {
     return arr;
   }
-  var left = [],
-    right = [];
-  var pIndex = Math.floor(arr.length / 2);
-  var p = arr.splice(pIndex, 1)[0];
-  for (var i = 0; i < arr.length; i++) {
+  const left = [];
+  const right = [];
+  const pIndex = Math.floor(arr.length / 2);
+  const p = arr.splice(pIndex, 1)[0];
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] <= p) {
       left.push(arr[i]);
     } else {
@@ -148,10 +148,10 @@ function quickArr(arr) {
 
 // 冒泡
 function bubbleSort(arr) {
-  for (var i = 0; i < arr.length - 1; i++) {
-    for (var j = i + 1; j < arr.length; j++) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] > arr[j]) {
-        var temp = arr[i];
+        const temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
       }
@@ -161,11 +161,11 @@ function bubbleSort(arr) {
 }
 
 function bubbleSort(arr) {
-  var len = arr.length;
-  for (var i = 0; i < len - 1; i++) {
-    for (var j = 0; j < len - 1 - i; j++) {
+  const len = arr.length;
+  for (let i = 0; i < len - 1; i++) {
+    for (let j = 0; j < len - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
-        var temp = arr[j];
+        const temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }

@@ -4,10 +4,10 @@
 
 ```js
 String.prototype.unique = function () {
-  var obj = {},
-    str = "",
-    len = this.length;
-  for (var i = 0; i < len; i++) {
+  const obj = {};
+  let str = '';
+  const len = this.length;
+  for (let i = 0; i < len; i++) {
     if (!obj[this[i]]) {
       str += this[i];
       obj[this[i]] = true;
@@ -16,9 +16,9 @@ String.prototype.unique = function () {
   return str;
 };
 
-//去除连续的字符串
+// 去除连续的字符串
 function uniq(str) {
-  return str.replace(/(\w)\1+/g, "$1");
+  return str.replace(/(\w)\1+/g, '$1');
 }
 ```
 
@@ -26,16 +26,16 @@ function uniq(str) {
 
 ```js
 String.prototype.firstAppear = function () {
-  var obj = {},
-    len = this.length;
-  for (var i = 0; i < len; i++) {
+  const obj = {};
+  const len = this.length;
+  for (let i = 0; i < len; i++) {
     if (obj[this[i]]) {
       obj[this[i]]++;
     } else {
       obj[this[i]] = 1;
     }
   }
-  for (var prop in obj) {
+  for (const prop in obj) {
     if (obj[prop] == 1) {
       return prop;
     }
@@ -47,11 +47,11 @@ String.prototype.firstAppear = function () {
 
 ```js
 function isPalina(str) {
-  if (Object.prototype.toString.call(str) !== "[object String]") {
+  if (Object.prototype.toString.call(str) !== '[object String]') {
     return false;
   }
-  var len = str.length;
-  for (var i = 0; i < len / 2; i++) {
+  const len = str.length;
+  for (let i = 0; i < len / 2; i++) {
     if (str[i] != str[len - 1 - i]) {
       return false;
     }
@@ -60,9 +60,9 @@ function isPalina(str) {
 }
 
 function isPalindrome(str) {
-  str = str.replace(/\W/g, "").toLowerCase();
+  str = str.replace(/\W/g, '').toLowerCase();
   console.log(str);
-  return str == str.split("").reverse().join("");
+  return str == str.split('').reverse().join('');
 }
 ```
 
@@ -70,34 +70,34 @@ function isPalindrome(str) {
 
 ```js
 function getWindonHref() {
-  var sHref = window.location.href;
-  var args = sHref.split("?");
+  const sHref = window.location.href;
+  const args = sHref.split('?');
   if (args[0] === sHref) {
-    return "";
+    return '';
   }
-  var hrefarr = args[1].split("#")[0].split("&");
-  var obj = {};
-  for (var i = 0; i < hrefarr.length; i++) {
-    hrefarr[i] = hrefarr[i].split("=");
+  const hrefarr = args[1].split('#')[0].split('&');
+  const obj = {};
+  for (let i = 0; i < hrefarr.length; i++) {
+    hrefarr[i] = hrefarr[i].split('=');
     obj[hrefarr[i][0]] = hrefarr[i][1];
   }
   return obj;
 }
 
 function getUrlParam(sUrl, sKey) {
-  var result = {};
-  sUrl.replace(/(\w+)=(\w+)(?=[&|#])/g, function (ele, key, val) {
+  const result = {};
+  sUrl.replace(/(\w+)=(\w+)(?=[&|#])/g, (ele, key, val) => {
     if (!result[key]) {
       result[key] = val;
     } else {
-      var temp = result[key];
+      const temp = result[key];
       result[key] = [].concat(temp, val);
     }
   });
   if (!sKey) {
     return result;
-  } else {
-    return result[sKey] || "";
   }
+  return result[sKey] || '';
+
 }
 ```

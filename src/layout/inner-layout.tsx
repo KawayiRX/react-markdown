@@ -9,7 +9,7 @@ import { anchor } from 'config/anchors';
 import { AnchorWrapper, CustomContent, CustomSider } from './styles';
 
 interface InnerLayoutProps {
-    route: RouteTypes
+  route: RouteTypes
 }
 
 // export const AnchorContext = React.createContext(anchor['/react/base'])

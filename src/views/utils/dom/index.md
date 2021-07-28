@@ -6,9 +6,12 @@
 function inherit(Target, Origin) {
   function F() {}
   F.prototype = Origin.prototype;
+  // eslint-disable-next-line no-param-reassign
   Target.prototype = new F();
+  // eslint-disable-next-line no-param-reassign
   Target.prototype.constructor = Target;
   // 最终的原型指向
+  // eslint-disable-next-line no-param-reassign
   Target.prop.uber = Origin.prototype;
 }
 ```
@@ -58,10 +61,10 @@ function retSibling(e, n) {
 
 ```js
 function myChildren(e) {
-  var children = e.childNodes,
-    arr = [],
-    len = children.length;
-  for (var i = 0; i < len; i++) {
+  const children = e.childNodes;
+  const arr = [];
+  const len = children.length;
+  for (let i = 0; i < len; i++) {
     if (children[i].nodeType === 1) {
       arr.push(children[i]);
     }
@@ -74,9 +77,9 @@ function myChildren(e) {
 
 ```js
 function hasChildren(e) {
-  var children = e.childNodes,
-    len = children.length;
-  for (var i = 0; i < len; i++) {
+  const children = e.childNodes;
+  const len = children.length;
+  for (let i = 0; i < len; i++) {
     if (children[i].nodeType === 1) {
       return true;
     }
@@ -89,7 +92,7 @@ function hasChildren(e) {
 
 ```js
 Element.prototype.insertAfter = function (target, elen) {
-  var nextElen = elen.nextElenmentSibling;
+  const nextElen = elen.nextElenmentSibling;
   if (nextElen == null) {
     this.appendChild(target);
   } else {
@@ -107,12 +110,12 @@ function getScrollOffset() {
       x: window.pageXOffset,
       y: window.pageYOffset,
     };
-  } else {
-    return {
-      x: document.body.scrollLeft + document.documentElement.scrollLeft,
-      y: document.body.scrollTop + document.documentElement.scrollTop,
-    };
   }
+  return {
+    x: document.body.scrollLeft + document.documentElement.scrollLeft,
+    y: document.body.scrollTop + document.documentElement.scrollTop,
+  };
+
 }
 ```
 
@@ -125,22 +128,21 @@ function getViewportOffset() {
       w: window.innerWidth,
       h: window.innerHeight,
     };
-  } else {
-    // ie8及其以下
-    if (document.compatMode === "BackCompat") {
-      // 怪异模式
-      return {
-        w: document.body.clientWidth,
-        h: document.body.clientHeight,
-      };
-    } else {
-      // 标准模式
-      return {
-        w: document.documentElement.clientWidth,
-        h: document.documentElement.clientHeight,
-      };
-    }
   }
+  // ie8及其以下
+  if (document.compatMode === 'BackCompat') {
+    // 怪异模式
+    return {
+      w: document.body.clientWidth,
+      h: document.body.clientHeight,
+    };
+  }
+  // 标准模式
+  return {
+    w: document.documentElement.clientWidth,
+    h: document.documentElement.clientHeight,
+  };
+
 }
 ```
 
@@ -159,15 +161,15 @@ function getStyle(elem, prop) {
 ```js
 function addEvent(elem, type, handle) {
   if (elem.addEventListener) {
-    //非ie和非ie9
+    // 非ie和非ie9
     elem.addEventListener(type, handle, false);
   } else if (elem.attachEvent) {
-    //ie6到ie8
-    elem.attachEvent("on" + type, function () {
+    // ie6到ie8
+    elem.attachEvent(`on${type}`, () => {
       handle.call(elem);
     });
   } else {
-    elem["on" + type] = handle;
+    elem[`on${type}`] = handle;
   }
 }
 ```
@@ -177,13 +179,13 @@ function addEvent(elem, type, handle) {
 ```js
 function removeEvent(elem, type, handle) {
   if (elem.removeEventListener) {
-    //非ie和非ie9
+    // 非ie和非ie9
     elem.removeEventListener(type, handle, false);
   } else if (elem.detachEvent) {
-    //ie6到ie8
-    elem.detachEvent("on" + type, handle);
+    // ie6到ie8
+    elem.detachEvent(`on${type}`, handle);
   } else {
-    elem["on" + type] = null;
+    elem[`on${type}`] = null;
   }
 }
 ```
@@ -203,25 +205,24 @@ function stopBubble(e) {
 - 兼容 getElementsByClassName 方法
 
 ```js
-Element.prototype.getElementsByClassName =
-  Document.prototype.getElementsByClassName = function (_className) {
-    var allDomArray = document.getElementsByTagName("*");
-    var lastDomArray = [];
-    function trimSpace(strClass) {
-      var reg = /\s+/g;
-      return strClass.replace(reg, " ").trim();
-    }
-    for (var i = 0; i < allDomArray.length; i++) {
-      var classArray = trimSpace(allDomArray[i].className).split(" ");
-      for (var j = 0; j < classArray.length; j++) {
-        if (classArray[j] == _className) {
-          lastDomArray.push(allDomArray[i]);
-          break;
-        }
+Element.prototype.getElementsByClassName = Document.prototype.getElementsByClassName = function (_className) {
+  const allDomArray = document.getElementsByTagName('*');
+  const lastDomArray = [];
+  function trimSpace(strClass) {
+    const reg = /\s+/g;
+    return strClass.replace(reg, ' ').trim();
+  }
+  for (let i = 0; i < allDomArray.length; i++) {
+    const classArray = trimSpace(allDomArray[i].className).split(' ');
+    for (let j = 0; j < classArray.length; j++) {
+      if (classArray[j] == _className) {
+        lastDomArray.push(allDomArray[i]);
+        break;
       }
     }
-    return lastDomArray;
-  };
+  }
+  return lastDomArray;
+};
 ```
 
 - 便利 DOM 树
@@ -231,8 +232,8 @@ Element.prototype.getElementsByClassName =
 // 对于每个访问的元素，函数讲元素传递给提供的回调函数
 function traverse(element, callback) {
   callback(element);
-  var list = element.children;
-  for (var i = 0; i < list.length; i++) {
+  const list = element.children;
+  for (let i = 0; i < list.length; i++) {
     traverse(list[i], callback);
   }
 }

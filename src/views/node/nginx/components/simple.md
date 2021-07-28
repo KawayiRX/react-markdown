@@ -1,17 +1,15 @@
-# 部署前端项目
-
-## 前端项目
+* 前端项目
 
 > > > 配置 publicPath(webpack)
 
 ```js
-output.publicPath = "/music";
+output.publicPath = '/music';
 ```
 
 > > > 配置入口 html 文件的 meta 标签的 base 属性
 
-```js
-<meta base="/music" />
+```jsx
+<meta base="/music" />;
 ```
 
 > > > 配置路由 basename 属性
@@ -20,7 +18,7 @@ output.publicPath = "/music";
 <HistoryRouter basename="/music"></HistoryRouter>
 ```
 
-### 服务器
+* 服务器
 
 > > > 配置 nginx.conf 文件
 
@@ -40,6 +38,6 @@ output.publicPath = "/music";
     }
 ```
 
-<https://www.jianshu.com/p/276d59cbc529>
+- <https://www.jianshu.com/p/276d59cbc529>
 
-<!-- <https://gitee.com/leijianggitee/docs/raw/master/_media/nginx.jpeg> -->
+- <https://gitee.com/leijianggitee/docs/raw/master/_media/nginx.jpeg>
