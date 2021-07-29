@@ -5,7 +5,10 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom';
-import { RouteTypes, routes } from 'config/routes';
+import {
+  RouteTypes,
+  routes,
+} from 'config/routes';
 
 const render = (initRoutes: RouteTypes[]) => {
   if (!initRoutes || !initRoutes.length) return null;

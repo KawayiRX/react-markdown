@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-// import { transform } from '@babel/core';
 import { mdx } from '@mdx-js/react';
 import { LiveEditor } from 'react-live';
-// import provideTheme from 'prism-react-renderer/themes/palenight';
 import provideTheme from 'prism-react-renderer/themes/github';
+import Clipboard from 'clipboard';
 import {
-  Pre, Line, LineContent, LineNo, StyledEditor, StyledError, StyledPreview, StyledProvider, LiveWrapper, PreWrapper,
+  Pre,
+  Line,
+  LineContent,
+  LineNo,
+  StyledEditor,
+  StyledError,
+  StyledPreview,
+  StyledProvider,
+  LiveWrapper,
+  PreWrapper,
+  Copy,
 } from 'components/highlight/styles';
-import AntDesign from './ant-design';
+import * as AntDesign from './ant-design';
 
 interface IHighlightProps {
   children?: string;
@@ -25,6 +34,27 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
   } = props;
 
   const lang: any = className.replace(/language-/, '');
+
+  const CopyButton = useMemo(() => (
+    <Copy
+      className="copy"
+      data-clipboard-text={children}
+      onClick={() => {
+        const clipboard = new Clipboard('.copy');
+        clipboard.on('success', (e) => {
+          AntDesign.message.success('复制成功');
+          e.clearSelection();
+          clipboard.destroy();
+        });
+
+        clipboard.on('error', () => {
+          AntDesign.message.error('复制失败');
+        });
+      }}
+    >
+      {`${lang} 代码复制`}
+    </Copy>
+  ), [children]);
 
   if (live || render) {
     return (
@@ -51,25 +81,37 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
         //   }
         // }}
         scope={{
-          mdx, styled, ...AntDesign, ...React,
+          mdx,
+          styled,
+          ...AntDesign,
+          ...React,
         }}
       >
         <LiveWrapper>
           <StyledEditor>
+            {CopyButton}
             <LiveEditor />
           </StyledEditor>
           <StyledPreview />
         </LiveWrapper>
-
         <StyledError />
       </StyledProvider>
     );
   }
 
   return (
-    <Highlight {...defaultProps} code={children} language={lang} theme={provideTheme}>
+    <Highlight
+      {...defaultProps}
+      code={children}
+      language={lang}
+      theme={provideTheme}
+    >
       {({
-        className: classs, style, tokens, getLineProps, getTokenProps,
+        className: classs,
+        style,
+        tokens,
+        getLineProps,
+        getTokenProps,
       }) => (
         <Pre className={classs} style={style}>
           <PreWrapper>
@@ -84,6 +126,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
               </Line>
             ))}
           </PreWrapper>
+          {CopyButton}
         </Pre>
       )}
     </Highlight>

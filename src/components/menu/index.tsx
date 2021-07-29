@@ -26,7 +26,7 @@ const Slider: React.FC<SliderType> = (props) => {
               <div>
                 <span>{item.name}</span>
               </div>
-              )}
+            )}
           >
             {renderMenuItem(item.routes)}
           </Menu.SubMenu>

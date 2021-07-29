@@ -9,6 +9,8 @@ export const red = '#ff5555';
 export const blue = polished.lighten(0.1, '#d1b0dd');
 export const lightGrey = polished.darken(0.06, '#42374a');
 
+const codeSize = 17;
+
 export const H1 = styled.h1`
     font-size: 20px;
     font-weight: bolder;
@@ -37,13 +39,24 @@ export const Pre = styled.pre`
   padding: 0.5em;
   width: 50%;
   overflow: scroll;
+  position: relative;
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
 `;
 
 export const PreWrapper = styled.div`
   max-height: ${polished.rem(350)};
   overflow: auto;
+  font-size: ${polished.rem(codeSize)};
   &::-webkit-scrollbar { height: 0 !important;width:0px !important; }
+`;
+
+export const Copy = styled.div`
+  position: absolute;
+  right: 0;
+  top: 10px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 15px;
 `;
 
 export const P = styled.p`
@@ -102,8 +115,9 @@ export const column = css`
 
 export const StyledEditor = styled.div`
   background: #fff;
+  position: relative;
   font-family: 'Source Code Pro', monospace;
-  font-size: ${polished.rem(14)};
+  font-size: ${polished.rem(codeSize)};
   height: ${polished.rem(350)};
   max-height: ${polished.rem(350)};
   overflow: auto;
@@ -117,6 +131,7 @@ export const StyledEditor = styled.div`
 export const StyledPreview = styled(LivePreview)`
   position: relative;
   padding: 0.5rem;
+  font-size: ${polished.rem(codeSize)};
   background: white;
   color: black;
   height: auto;

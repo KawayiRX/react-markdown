@@ -4,7 +4,7 @@ import { Anchor } from 'antd';
 const { Link } = Anchor;
 
 interface IAnchor {
-    anchor: any
+  anchor: any
 }
 
 const AnchorExample: React.FC<IAnchor> = ({ anchor }) => {
@@ -17,10 +17,10 @@ const AnchorExample: React.FC<IAnchor> = ({ anchor }) => {
   return (
     <Anchor affix={false} targetOffset={targetOffset}>
       {
-                (anchor || []).map((item: { id: string, title: string }) => (
-                  <Link href={`#${item.id}`} title={item.title} key={item.id} />
-                ))
-            }
+        (anchor || []).map((item: { id: string, title: string }) => (
+          <Link href={`#${item.id}`} title={item.title} key={item.id} />
+        ))
+      }
     </Anchor>
   );
 };
