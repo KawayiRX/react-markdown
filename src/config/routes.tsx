@@ -33,15 +33,20 @@ export const routes: RouteTypes[] = [
                 component: loadabled(() => import('views/react/base/index.md')),
               },
               {
+                path: '/react/echarts',
+                name: 'Echarts',
+                component: loadabled(() => import('views/react/echarts/index.md')),
+              },
+              {
                 path: '/react/typescript',
                 name: 'Typescript',
                 component: loadabled(() => import('views/react/typescript/index.md')),
               },
-              {
-                path: '/react/markdown',
-                name: 'Markdown',
-                component: loadabled(() => import('views/react/markdown/index.md')),
-              },
+              // {
+              //   path: '/react/markdown',
+              //   name: 'Markdown',
+              //   component: loadabled(() => import('views/react/markdown/index.md')),
+              // },
               { path: '/react', exact: true, redirect: '/react/docs' },
             ],
           },

@@ -8,7 +8,7 @@ module.exports = {
     'import/resolver': {
       node: {
         moduleDirectory: ['node_modules', 'src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.md'],
       },
     },
   },
@@ -32,7 +32,7 @@ module.exports = {
   overrides: [
     {
       // 2. Enable the Markdown processor for all .md files.
-      files: ['**/*.md'],
+      files: ['**/*.md', './src/views/**/.md'],
       processor: 'markdown/markdown',
     },
   ],

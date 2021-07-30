@@ -4,6 +4,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import { mdx } from '@mdx-js/react';
 import { LiveEditor } from 'react-live';
 import provideTheme from 'prism-react-renderer/themes/github';
+import * as echarts from 'echarts';
 import Clipboard from 'clipboard';
 import {
   Pre,
@@ -26,11 +27,17 @@ interface IHighlightProps {
   live?: boolean;
   render?: boolean;
   noInline?: boolean;
+  width?: string
 }
 
 const IHighlight: React.FC<IHighlightProps> = (props) => {
   const {
-    className = '', live, children = '', render, noInline = true,
+    className = '',
+    live,
+    children = '',
+    render,
+    noInline = true,
+    width,
   } = props;
 
   const lang: any = className.replace(/language-/, '');
@@ -85,6 +92,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
           styled,
           ...AntDesign,
           ...React,
+          echarts,
         }}
       >
         <LiveWrapper>
@@ -113,7 +121,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
         getLineProps,
         getTokenProps,
       }) => (
-        <Pre className={classs} style={style}>
+        <Pre className={classs} style={{ ...style, width }}>
           <PreWrapper>
             {tokens.slice(0, tokens.length - 1).map((line, i) => (
               <Line {...getLineProps({ line, key: i })}>
