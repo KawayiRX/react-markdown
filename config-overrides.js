@@ -1,3 +1,5 @@
+// import gfm from 'remark-gfm'
+
 const { override, fixBabelImports, addLessLoader } = require('customize-cra')
 
 module.exports = override(
@@ -18,6 +20,7 @@ module.exports = override(
   }),
 
   (config) => {
+    // eslint-disable-next-line no-param-reassign
     config.node = {
       fs: 'empty'
     }
@@ -33,7 +36,9 @@ module.exports = override(
         'babel-loader',
         {
           loader: '@mdx-js/loader',
-          options: {}
+          options: {
+            // remarkPlugins: [gfm]
+          }
         }
       ]
     })

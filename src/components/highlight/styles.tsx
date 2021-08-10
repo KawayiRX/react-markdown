@@ -9,7 +9,7 @@ export const red = '#ff5555'
 export const blue = polished.lighten(0.1, '#d1b0dd')
 export const lightGrey = polished.darken(0.06, '#42374a')
 
-const codeSize = 17
+const codeSize = 16
 
 export const H1 = styled.h1`
   font-size: 20px;

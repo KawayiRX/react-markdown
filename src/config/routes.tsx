@@ -61,9 +61,9 @@ export const routes: RouteTypes[] = [
                 component: loadabled(() => import('views/node/npm/index.md'))
               },
               {
-                path: '/node/nginx',
-                name: 'nginx',
-                component: loadabled(() => import('views/node/nginx/index.md'))
+                path: '/node/engine',
+                name: 'Setting',
+                component: loadabled(() => import('views/node/engine/index.md'))
               },
               { path: '/node', exact: true, redirect: '/node/npm' }
             ]

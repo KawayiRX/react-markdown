@@ -4,7 +4,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 import { mdx } from '@mdx-js/react'
 import { LiveEditor } from 'react-live'
 import provideTheme from 'prism-react-renderer/themes/github'
-import * as echarts from 'echarts'
+import Echarts from 'components/echarts/base-charts'
 import Clipboard from 'clipboard'
 import {
   Pre,
@@ -86,9 +86,9 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
         scope={{
           mdx,
           styled,
+          Echarts,
           ...AntDesign,
-          ...React,
-          echarts
+          ...React
         }}
       >
         <LiveWrapper>
