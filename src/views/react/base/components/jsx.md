@@ -1,7 +1,7 @@
 ```jsx live=true noInline=true
 class Demo2 extends Component {
   render() {
-    return <h1>Hello, world!</h1>;
+    return <h1>Hello, world!</h1>
   }
 }
 
@@ -10,19 +10,19 @@ render(
     {/* <Demo/>, */}
     <Demo2 />
   </>
-);
+)
 ```
 
 - ## JSX (是 JavaScript 的语法扩展, 用来描述 UI, 具有 JavaScript 的全部功能)
 
 ```jsx render=true noInline=true
 const Demo = () => {
-  const hello = "Hello, world!";
+  const hello = 'Hello, world!'
 
   // 嵌入表达式 可以是任意有效的
-  const items = <h1>{hello}</h1>;
+  const items = <h1>{hello}</h1>
 
-  const arr = [1, 2, 3];
+  const arr = [1, 2, 3]
   return (
     <>
       {arr.map((item, index) =>
@@ -33,10 +33,10 @@ const Demo = () => {
         )
       )}
     </>
-  );
-};
+  )
+}
 
-render(<Demo />);
+render(<Demo />)
 ```
 
 - ## 为什么使用 JSX？
@@ -51,8 +51,8 @@ render(<Demo />);
 
 ```jsx
 // 在属性中嵌入 JavaScript 表达式时，不要在大括号外面加上引号。你应该仅使用引号（对于字符串值）或大括号（对于表达式）中的一个，对于同一属性不能同时使用这两种符号。
-const element = <div tabIndex="0"></div>;
-const element = <img src={user.avatarUrl}></img>;
+const element = <div tabIndex="0"></div>
+const element = <img src={user.avatarUrl}></img>
 ```
 
 - ## JSX 仅仅只是 React.createElement(component, props, ...children) 函数的语法糖。
@@ -86,15 +86,15 @@ React.createElement(
 - **在 JSX 类型中使用点语法**
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 const MyComponents = {
   DatePicker: function DatePicker(props) {
-    return <div>Imagine a {props.color} datepicker here.</div>;
-  },
-};
+    return <div>Imagine a {props.color} datepicker here.</div>
+  }
+}
 
 function BlueDatePicker() {
-  return <MyComponents.DatePicker color="blue" />;
+  return <MyComponents.DatePicker color="blue" />
 }
 ```

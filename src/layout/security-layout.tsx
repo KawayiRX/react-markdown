@@ -1,8 +1,10 @@
-import React from 'react';
+import React from 'react'
 // import {Redirect} from 'react-router-dom';
 
-type SecurityLayoutType = {};
+type SecurityLayoutType = {}
 
-const SecurityLayout: React.FC<SecurityLayoutType> = ({ children }) => <div style={{ height: '100%' }}>{children}</div>;
+const SecurityLayout: React.FC<SecurityLayoutType> = ({ children }) => (
+  <div style={{ height: '100%' }}>{children}</div>
+)
 
-export default SecurityLayout;
+export default SecurityLayout

@@ -1,12 +1,12 @@
-import React from 'react';
-import { useLocation } from 'react-router';
-import { Layout } from 'antd';
-import Highlight from 'components/highlight';
-import Anchor from 'components/Anchor';
-import Menu from 'components/menu';
-import { RouteTypes } from 'config/routes';
-import { anchor } from 'config/anchors';
-import { AnchorWrapper, CustomContent, CustomSider } from './styles';
+import React from 'react'
+import { useLocation } from 'react-router'
+import { Layout } from 'antd'
+import Highlight from 'components/highlight'
+import Anchor from 'components/Anchor'
+import Menu from 'components/menu'
+import { RouteTypes } from 'config/routes'
+import { anchor } from 'config/anchors'
+import { AnchorWrapper, CustomContent, CustomSider } from './styles'
 
 interface InnerLayoutProps {
   route: RouteTypes
@@ -15,9 +15,9 @@ interface InnerLayoutProps {
 // export const AnchorContext = React.createContext(anchor['/react/base'])
 
 const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
-  const { route } = props;
+  const { route } = props
 
-  const local = useLocation();
+  const local = useLocation()
 
   return (
     <Layout>
@@ -33,7 +33,7 @@ const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
         </AnchorWrapper>
       </CustomContent>
     </Layout>
-  );
-};
+  )
+}
 
-export default InnerLayout;
+export default InnerLayout

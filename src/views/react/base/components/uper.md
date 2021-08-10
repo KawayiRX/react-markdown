@@ -2,26 +2,26 @@
 
 ```jsx render=true
 const Show = (props) => {
-  return <Typography.Title>{`Props, value ${props.value}`}</Typography.Title>;
-};
+  return <Typography.Title>{`Props, value ${props.value}`}</Typography.Title>
+}
 
 const Write = (props) => {
-  return <Input onChange={props.handleChangeValue} value={props.value} />;
-};
+  return <Input onChange={props.handleChangeValue} value={props.value} />
+}
 
 function BoilingVerdict() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('')
 
   const handleChangeValue = (e) => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
   return (
     <>
       <Write handleChangeValue={handleChangeValue} value={value} />
       <Show value={value} />
     </>
-  );
+  )
 }
 
-render(<BoilingVerdict />);
+render(<BoilingVerdict />)
 ```

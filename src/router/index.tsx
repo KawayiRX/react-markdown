@@ -1,17 +1,9 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-  Route,
-} from 'react-router-dom';
-import {
-  RouteTypes,
-  routes,
-} from 'config/routes';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
+import { RouteTypes, routes } from 'config/routes'
 
 const render = (initRoutes: RouteTypes[]) => {
-  if (!initRoutes || !initRoutes.length) return null;
+  if (!initRoutes || !initRoutes.length) return null
   return (
     <Switch>
       {initRoutes.map((route: RouteTypes, index) => {
@@ -24,7 +16,7 @@ const render = (initRoutes: RouteTypes[]) => {
               from={route.path}
               to={route.redirect}
             />
-          );
+          )
         }
 
         return (
@@ -34,23 +26,19 @@ const render = (initRoutes: RouteTypes[]) => {
             exact={route.exact}
             strict={route.strict}
             render={() => {
-              const renderChildRoutes = render(route.routes || []);
+              const renderChildRoutes = render(route.routes || [])
               if (route.component) {
-                return (
-                  <route.component route={route}>
-                    {renderChildRoutes}
-                  </route.component>
-                );
+                return <route.component route={route}>{renderChildRoutes}</route.component>
               }
-              return renderChildRoutes;
+              return renderChildRoutes
             }}
           />
-        );
+        )
       })}
     </Switch>
-  );
-};
+  )
+}
 
-const createRoute = () => <Router>{render(routes)}</Router>;
+const createRoute = () => <Router>{render(routes)}</Router>
 
-export default createRoute();
+export default createRoute()

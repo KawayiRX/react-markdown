@@ -1,6 +1,4 @@
-import React from 'react';
+import React from 'react'
 
-const BlankLayout: React.FC = ({ children }) => (
-  <div style={{ height: '100%' }}>{children}</div>
-);
-export default BlankLayout;
+const BlankLayout: React.FC = ({ children }) => <div style={{ height: '100%' }}>{children}</div>
+export default BlankLayout

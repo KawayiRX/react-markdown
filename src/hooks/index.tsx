@@ -1,21 +1,21 @@
-import {
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState } from 'react'
 
 export const useMount = (fn: () => void) => {
   useEffect(() => {
-    fn();
-  }, []);
-};
+    fn()
+  }, [])
+}
 
 export const useMarkdown = (url: string): { markdown: string } => {
-  const [markdown, setMarkdown] = useState('');
+  const [markdown, setMarkdown] = useState('')
   useMount(() => {
-    fetch(url).then((md) => md.text()).then((m) => setMarkdown(m)).catch(() => setMarkdown(''));
-  });
+    fetch(url)
+      .then((md) => md.text())
+      .then((m) => setMarkdown(m))
+      .catch(() => setMarkdown(''))
+  })
 
   return {
-    markdown,
-  };
-};
+    markdown
+  }
+}

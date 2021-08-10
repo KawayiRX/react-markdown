@@ -4,22 +4,22 @@
 
 ```jsx render=true
 const MouseTracker = (props) => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState({})
 
   const handleMouseMove = (event) => {
     setState({
       x: event.clientX,
-      y: event.clientY,
-    });
-  };
+      y: event.clientY
+    })
+  }
 
   return (
-    <div style={{ height: "100vh" }} onMouseMove={handleMouseMove}>
+    <div style={{ height: '100vh' }} onMouseMove={handleMouseMove}>
       <h1>移动鼠标!</h1>
       {props.render(state)}
     </div>
-  );
-};
+  )
+}
 
 const Demo = () => {
   return (
@@ -29,13 +29,13 @@ const Demo = () => {
           <p>
             当前的鼠标位置是 ({state.x}, {state.y})
           </p>
-        );
+        )
       }}
     >
       sss
     </MouseTracker>
-  );
-};
+  )
+}
 
-render(<Demo />);
+render(<Demo />)
 ```

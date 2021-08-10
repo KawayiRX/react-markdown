@@ -5,7 +5,7 @@ import {Alert} from 'antd'
 ```jsx render=true
 class App extends Component {
   render() {
-    return <Toolbar theme="primary" />;
+    return <Toolbar theme="primary" />
   }
 }
 
@@ -17,23 +17,22 @@ function Toolbar(props) {
     <div>
       <ThemedButton theme={props.theme} />
     </div>
-  );
+  )
 }
 
 class ThemedButton extends React.Component {
   render() {
-    return <Button type={this.props.theme}>Context</Button>;
+    return <Button type={this.props.theme}>Context</Button>
   }
 }
 
-render(<App />);
+render(<App />)
 ```
 
 - 使用 Context 就可以不必在组件之间层层传递
 
 ```jsx render=true
-
-const ButtonContext = createContext("primary");
+const ButtonContext = createContext('primary')
 
 class App extends Component {
   render() {
@@ -41,7 +40,7 @@ class App extends Component {
       <ButtonContext.Provider value="dashed">
         <Toolbar />
       </ButtonContext.Provider>
-    );
+    )
   }
 }
 
@@ -53,21 +52,20 @@ function Toolbar(props) {
     <div>
       <ThemedButton />
     </div>
-  );
+  )
 }
 
 class ThemedButton extends React.Component {
-
   // static contextType = ButtonContext;
 
   render() {
-    return <Button type={this.context}>Context</Button>;
+    return <Button type={this.context}>Context</Button>
   }
 }
 
 ThemedButton.contextType = ButtonContext
 
-render(<App />);
+render(<App />)
 ```
 
 ## React.createContext
@@ -93,19 +91,19 @@ style={{width: "50%"}}
 class App extends React.Component {
   render() {
     return (
-      <MyContext.Provider value={{ something: "something" }}>
+      <MyContext.Provider value={{ something: 'something' }}>
         <Toolbar />
       </MyContext.Provider>
-    );
+    )
   }
 }
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      value: { something: "something" },
-    };
+      value: { something: 'something' }
+    }
   }
 
   render() {
@@ -113,7 +111,7 @@ class App extends React.Component {
       <MyContext.Provider value={this.state.value}>
         <Toolbar />
       </MyContext.Provider>
-    );
+    )
   }
 }
 ```
@@ -145,44 +143,44 @@ MyContext.displayName = 'MyDisplayName';
 ```jsx render=true
 const themes = {
   light: {
-    foreground: "#000000",
-    background: "#eeeeee",
+    foreground: '#000000',
+    background: '#eeeeee'
   },
   dark: {
-    foreground: "#ffffff",
-    background: "#222222",
-  },
-};
+    foreground: '#ffffff',
+    background: '#222222'
+  }
+}
 
 const ThemeContext = React.createContext(
   themes.dark // 默认值
-);
+)
 
 class ThemedButton extends React.Component {
   render() {
-    let props = this.props;
-    let theme = this.context;
-    return <button {...props} style={{ backgroundColor: theme.background }} />;
+    let props = this.props
+    let theme = this.context
+    return <button {...props} style={{ backgroundColor: theme.background }} />
   }
 }
-ThemedButton.contextType = ThemeContext;
+ThemedButton.contextType = ThemeContext
 
 function Toolbar(props) {
-  return <ThemedButton onClick={props.changeTheme}>Change Theme</ThemedButton>;
+  return <ThemedButton onClick={props.changeTheme}>Change Theme</ThemedButton>
 }
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      theme: themes.light,
-    };
+      theme: themes.light
+    }
 
     this.toggleTheme = () => {
       this.setState((state) => ({
-        theme: state.theme === themes.dark ? themes.light : themes.dark,
-      }));
-    };
+        theme: state.theme === themes.dark ? themes.light : themes.dark
+      }))
+    }
   }
 
   render() {
@@ -197,27 +195,27 @@ class App extends React.Component {
           <ThemedButton />
         </div>
       </div>
-    );
+    )
   }
 }
 
-render(<App />);
+render(<App />)
 ```
 
 ## 消费多个 Context
 
 ```jsx
 // Theme context，默认的 theme 是 “light” 值
-const ThemeContext = React.createContext("light");
+const ThemeContext = React.createContext('light')
 
 // 用户登录 context
 const UserContext = React.createContext({
-  name: "Guest",
-});
+  name: 'Guest'
+})
 
 class App extends React.Component {
   render() {
-    const { signedInUser, theme } = this.props;
+    const { signedInUser, theme } = this.props
 
     // 提供初始 context 值的 App 组件
     return (
@@ -226,7 +224,7 @@ class App extends React.Component {
           <Layout />
         </UserContext.Provider>
       </ThemeContext.Provider>
-    );
+    )
   }
 }
 
@@ -236,7 +234,7 @@ function Layout() {
       <Sidebar />
       <Content />
     </div>
-  );
+  )
 }
 
 // 一个组件可能会消费多个 context
@@ -249,6 +247,6 @@ function Content() {
         </UserContext.Consumer>
       )}
     </ThemeContext.Consumer>
-  );
+  )
 }
 ```

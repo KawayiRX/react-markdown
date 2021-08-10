@@ -2,39 +2,37 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   settings: {
     'import/resolver': {
       node: {
         moduleDirectory: ['node_modules', 'src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.md'],
-      },
-    },
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.md']
+      }
+    }
   },
   extends: [
     'plugin:react/recommended',
     'airbnb',
     'plugin:markdown/recommended',
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: 'module'
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@typescript-eslint'],
   overrides: [
     {
       // 2. Enable the Markdown processor for all .md files.
       files: ['**/*.md', './src/views/**/.md'],
-      processor: 'markdown/markdown',
-    },
+      processor: 'markdown/markdown'
+    }
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
@@ -53,8 +51,8 @@ module.exports = {
         js: 'never',
         jsx: 'never',
         ts: 'never',
-        tsx: 'never',
-      },
-    ],
-  },
-};
+        tsx: 'never'
+      }
+    ]
+  }
+}

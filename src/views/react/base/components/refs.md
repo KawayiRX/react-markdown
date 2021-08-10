@@ -13,22 +13,22 @@ import {Text} from 'components/styled'
 ```jsx render=true
 class RefsDemo extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.ref = createRef();
+    this.ref = createRef()
   }
 
   componentDidMount() {
     // 可以通过ref的current去访问DOM
-    console.log(this.ref, "Sssssssssss");
+    console.log(this.ref, 'Sssssssssss')
   }
 
   render() {
-    return <div ref={this.ref}>sss</div>;
+    return <div ref={this.ref}>sss</div>
   }
 }
 
-render(<RefsDemo />);
+render(<RefsDemo />)
 ```
 
 - ref 的值根据节点的类型而有所不同
@@ -44,29 +44,29 @@ render(<RefsDemo />);
 
 ```jsx render=true
 const Func = forwardRef((props, ref) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   useImperativeHandle(
     ref,
     () => ({
-      addCount: () => setCount(count + 1),
+      addCount: () => setCount(count + 1)
     }),
     [count]
-  );
+  )
 
-  return <div ref={ref}>{count}</div>;
-});
+  return <div ref={ref}>{count}</div>
+})
 
 const App = () => {
-  const func = useRef();
+  const func = useRef()
 
   return (
     <>
       <Func ref={func} />
       <Button onClick={() => func.current.addCount()}>add</Button>
     </>
-  );
-};
+  )
+}
 
-render(<App />);
+render(<App />)
 ```

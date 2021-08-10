@@ -1,6 +1,6 @@
-import React from 'react';
-import RouteView from 'router';
+import React from 'react'
+import RouteView from 'router'
 
 export default function App() {
-  return <div>{RouteView}</div>;
+  return <div>{RouteView}</div>
 }

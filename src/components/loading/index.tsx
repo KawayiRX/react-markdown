@@ -1,7 +1,5 @@
-import React from 'react';
-import {
-  Container, Loading, Wrapper, Item,
-} from './styled';
+import React from 'react'
+import { Container, Loading, Wrapper, Item } from './styled'
 
 const LoadingPage: React.FC = () => (
   <Container>
@@ -15,6 +13,6 @@ const LoadingPage: React.FC = () => (
       </Wrapper>
     </Loading>
   </Container>
-);
+)
 
-export default LoadingPage;
+export default LoadingPage

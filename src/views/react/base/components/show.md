@@ -3,8 +3,8 @@
 
 ```jsx
 // 通过 ReactDOM渲染到页面
-const element = <h1>Hello, world</h1>;
-ReactDOM.render(element, document.getElementById("root"));
+const element = <h1>Hello, world</h1>
+ReactDOM.render(element, document.getElementById('root'))
 ```
 
 - ## 更新渲染
@@ -17,10 +17,10 @@ function tick() {
       <h1>Hello, world!</h1>
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
-  );
-  ReactDOM.render(Demo, document.getElementById("root"));
+  )
+  ReactDOM.render(Demo, document.getElementById('root'))
 }
-setInterval(tick, 1000);
+setInterval(tick, 1000)
 ```
 
 - **React 的更新不会是全部进行更新而是只更新状态发生改变的部分。**

@@ -12,10 +12,10 @@ style={{width: "50%"}}
 
 ```jsx live=true noInline=true
 const Demo = () => {
-  return <div>Demo</div>;
-};
+  return <div>Demo</div>
+}
 
-render(<Demo />);
+render(<Demo />)
 ```
 
 - React 中创建组件分为两种方式（class, function）
@@ -24,25 +24,23 @@ render(<Demo />);
 - 注意: class 上定义的函数默认 this 并没有指向当前组件需要手动绑定 this
 
 ```jsx render=true noInline=true
-
 function Demo(props) {
   // 当前组件没有自身状态， props进行渲染
   return (
     <Button type="primary" onClick={() => props.clear()}>
       {props.count || 0}
     </Button>
-  );
+  )
 }
 
 class ClassComponent extends React.Component {
-
   constructor() {
     state = {
       count: 0,
-      timer: null,
-    };
+      timer: null
+    }
   }
-  
+
   // 即将弃用 组件即将渲染 16采用fiber架构后这个生命周期处于调和阶段，这个阶段的可以中断，也就是会执行多次这个生命周期
   /*
         react16 以后做了很大的改变，对 diff 算法进行了重写，从总体看，主要是把一次计算，改变为多次计算，在浏览器有高级任务时，暂停计算。
@@ -56,8 +54,8 @@ class ClassComponent extends React.Component {
 
   // 只有props改变的时候会调用 获取从props传入的值一般用于赋值state 16.8以后替换componentWillReceiveProps生命周期
   static getDerivedStateFromProps(props, state) {
-    console.log("getDerivedStateFromProps");
-    return {};
+    console.log('getDerivedStateFromProps')
+    return {}
   }
 
   // constructor() {
@@ -67,32 +65,32 @@ class ClassComponent extends React.Component {
 
   // 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数传递给 componentDidUpdate()。 替换 componentWillUpdate
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("getSnapshotBeforeUpdate");
-    return {};
+    console.log('getSnapshotBeforeUpdate')
+    return {}
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log('componentDidMount')
     this.timer = setInterval(() => {
-        this.setState({
-            count: this.state.count + 1
-        })
+      this.setState({
+        count: this.state.count + 1
+      })
     }, 1000)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("componentDidUpdate");
+    console.log('componentDidUpdate')
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
-    clearInterval(this.timer);
+    console.log('componentWillUnmount')
+    clearInterval(this.timer)
   }
 
   clear() {
-    console.log(this); // 当前this指向的事Demo组件 需要手动绑定this
+    console.log(this) // 当前this指向的事Demo组件 需要手动绑定this
     // 1. clear={this.clear.bind(this)}
-    clearInterval(this.timer);
+    clearInterval(this.timer)
   }
 
   // 2.使用箭头函数
@@ -101,28 +99,27 @@ class ClassComponent extends React.Component {
   // }
 
   render() {
-    return <Demo count={this.state.count} clear={this.clear.bind(this)} />;
+    return <Demo count={this.state.count} clear={this.clear.bind(this)} />
   }
 }
 
-render(<ClassComponent />);
-
+render(<ClassComponent />)
 ```
 
 - 自 16.8React 新增 Hooks 特性之后函数组件随着成为主流（函数组件也可以通过 hooks 管理自己内部状态）。
 
 ```jsx render=true noInline=true
 const HooksA = () => {
-  const [message, setMessage] = useState("hello");
+  const [message, setMessage] = useState('hello')
 
   return (
-    <Button onClick={() => setMessage("world")} type="primary">
+    <Button onClick={() => setMessage('world')} type="primary">
       {message}
     </Button>
-  );
-};
+  )
+}
 
-render(<HooksA />);
+render(<HooksA />)
 ```
 
 - 组件修改 state 只能通过 setState 这个方法去修改，不能直接去修改
@@ -132,32 +129,31 @@ render(<HooksA />);
 
 ```jsx render=true
 class Demo extends React.Component {
-  
   constructor() {
     this.state = {
-      count: 0,
-    };
+      count: 0
+    }
   }
 
   handleChangeCount() {
-    console.log(this.state);
+    console.log(this.state)
     // 更新对象被合并 （类似于 {...{{count: this.state.count +1}, {count: this.state.count +1}, {count: this.state.count +1}}}）
     // 所以最终只会修改一次
-    this.setState({ count: this.state.count + 1 });
-    this.setState({ count: this.state.count + 1 });
-    this.setState({ count: this.state.count + 1 });
-  };
+    this.setState({ count: this.state.count + 1 })
+    this.setState({ count: this.state.count + 1 })
+    this.setState({ count: this.state.count + 1 })
+  }
 
   render() {
     return (
       <Button onClick={this.handleChangeCount.bind(this)} type="primary">
         {this.state.count}
       </Button>
-    );
+    )
   }
 }
 
-render(<Demo />);
+render(<Demo />)
 ```
 
 - class 纯组件 PureComponent
@@ -170,50 +166,49 @@ render(<Demo />);
 // child1只要父组件更新它也会更新
 class Child1 extends Component {
   render() {
-    console.log("child1, render");
-    return <div>child1</div>;
+    console.log('child1, render')
+    return <div>child1</div>
   }
 }
 
 // child2使用了PureComponent对传入props进行了浅比较， 它没有依赖props自身状态也没发生变化 所以不会重新进行渲染
 class Child2 extends PureComponent {
   render() {
-    console.log("child2, render");
-    return <div>child2</div>;
+    console.log('child2, render')
+    return <div>child2</div>
   }
 }
 
 const Child3 = memo(() => {
-  console.log("child3, render");
-  return <div>child3</div>;
-});
+  console.log('child3, render')
+  return <div>child3</div>
+})
 
 class Demo extends Component {
-  
   constructor() {
     this.state = {
-      message: "hello",
+      message: 'hello'
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     // 当返回了false那就无论如何也不会对UI进行更新
-    return false;
+    return false
   }
 
-  handleChangeMessage(){
+  handleChangeMessage() {
     this.setState(
       {
-        message: "world",
+        message: 'world'
       },
       () => {
-        alert(this.state.message);
+        alert(this.state.message)
       }
-    );
-  };
+    )
+  }
 
   render() {
-    const { message } = this.state;
+    const { message } = this.state
 
     return (
       <>
@@ -224,11 +219,11 @@ class Demo extends Component {
         <Child2 />
         <Child3 />
       </>
-    );
+    )
   }
 }
 
-render(<Demo />);
+render(<Demo />)
 ```
 
 - 高阶组件(HOC)
@@ -241,29 +236,29 @@ render(<Demo />);
 ```jsx
 function logProps(InputComponent) {
   InputComponent.prototype.componentDidUpdate = function (prevProps) {
-    console.log("Current props: ", this.props);
-    console.log("Previous props: ", prevProps);
-  };
+    console.log('Current props: ', this.props)
+    console.log('Previous props: ', prevProps)
+  }
   // 返回原始的 input 组件，暗示它已经被修改。
-  return InputComponent;
+  return InputComponent
 }
 
 // 每次调用 logProps 时，增强组件都会有 log 输出。这样虽然可以实现，但是之后使用的相同生命周期会被覆盖。
-const EnhancedComponent = logProps(InputComponent);
+const EnhancedComponent = logProps(InputComponent)
 
 // 不应该直接对传入组件进行修改 而是使用组合x形成一个新的组件
 
 function logProps(WrappedComponent) {
   return class extends React.Component {
     componentDidUpdate(prevProps) {
-      console.log("Current props: ", this.props);
-      console.log("Previous props: ", prevProps);
+      console.log('Current props: ', this.props)
+      console.log('Previous props: ', prevProps)
     }
     render() {
       // 将 input 组件包装在容器中，而不对其进行修改。Good!
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent {...this.props} />
     }
-  };
+  }
 }
 ```
 
