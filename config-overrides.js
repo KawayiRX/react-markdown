@@ -37,7 +37,7 @@ module.exports = override(
         {
           loader: '@mdx-js/loader',
           options: {
-            // remarkPlugins: [gfm]
+            // remarkPlugins: [remarkGridTables]
           }
         }
       ]

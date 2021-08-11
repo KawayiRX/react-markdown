@@ -1,4 +1,3 @@
-import {Button} from 'antd'
 import {H1} from 'components/highlight/styles.tsx'
 import {Space, Text} from 'components/styled'
 import Image from 'components/image'
@@ -9,6 +8,8 @@ import Husky4 from 'assets/images/husky4.png'
 
 ## 代码规范 (EditorConfig + Prettier + ESLint)
 
+**sss**
+
 - 解决团队之间代码不规范导致的可读性差和可维护性差的问题。
 - 解决团队成员不同编辑器导致的编码规范不统一问题。
 - 提前发现代码风格问题，给出对应规范提示，及时修复。
@@ -17,7 +18,7 @@ import Husky4 from 'assets/images/husky4.png'
 
 ## 集成 EditorConfig 配置
 
-<Button href="https://editorconfig.org/" type="link" target="_blank">Editorconfig</Button> 有助于为不同 IDE 编辑器上处理同一项目的多个开发人员维护一致的编码风格。
+[EditorConfig](https://editorconfig.org/)有助于为不同 IDE 编辑器上处理同一项目的多个开发人员维护一致的编码风格。
 
 在项目根目录下增加 .editorconfig 文件：
 
@@ -46,7 +47,7 @@ trim_trailing_whitespace = false
 
 ## 集成 Prettier 配置
 
-<Button href="https://prettier.io/" type="link" target="_blank">Prettier</Button> 是一款强大的代码格式化工具 基本支持前端的所有文件格式。
+[Prettier](https://prettier.io/) 是一款强大的代码格式化工具 基本支持前端的所有文件格式。
 
 1. 安装 Prettier
 
@@ -97,7 +98,7 @@ npx prettier --write .
 
 ## 集成 ESLint 配置
 
-<Button href="https://github.com/eslint/eslint" type="link" target="_blank">ESLint</Button>是一款用于查找并报告代码中问题的工具，并且支持部分问题自动修复。
+[Eslint](https://github.com/eslint/eslint)是一款用于查找并报告代码中问题的工具，并且支持部分问题自动修复。
 
 ```shell
 # 安装
@@ -149,9 +150,9 @@ module.exports = {
 
 虽然在项目中集成了 ESLint 和 Prettier 代码检查工具可以保证一定代码质量，可是有时候开发开发者还是会禁用掉或者忽略代码检查，所以需要在代码提交阶段也进行检查
 
-** <Button href="https://github.com/typicode/husky" type="link" target="_blank">husky</Button> Git Hook 工具，可以设置在 git 各个阶段（pre-commit、commit-msg、pre-push 等）触发我们的命令。**
+**[husky](https://github.com/typicode/husky)Git Hook 工具，可以设置在 git 各个阶段（pre-commit、commit-msg、pre-push 等）触发我们的命令。**
 
-** <Button href="https://github.com/okonet/lint-staged" type="link" target="_blank">lint-staged </Button> 在 git 暂存的文件上运行 linters。**
+** [lint-staged](https://github.com/okonet/lint-staged) 在 git 暂存的文件上运行 linters。**
 
 - ## 配置 husky
 
@@ -203,7 +204,7 @@ eslint --fix ./src --ext .tsx,.js,.ts
 ## 提交规范
 
 - 多人协作的项目中，在提交代码这个环节，也存在一种情况：不能保证每个人对提交信息的准确描述，因此会出现提交信息紊乱、风格不一致的情况。
-- 目前流行的提交规范是 Angular 项目提交规范<Button href="https://github.com/angular/angular/commits/master" type="link" target="_blank">Angular 项目的提交记录</Button>
+- 目前流行的提交规范是 Angular 项目提交规范[Angular 项目提交记录](https://github.com/angular/angular/commits/master)
 
 # commit message 格式规范
 
@@ -236,13 +237,13 @@ commit message 由 Header、Body、Footer 组成。
 | chore    | 变更构建流程或辅助工具                                                                 |
 | chore    | 代码回退                                                                               |
 
-# scope 用于指定本次 commit 影响的范围。scope 依据项目而定，例如在业务项目中可以依据菜单或者功能模块划分，如果是组件库开发，则可以依据组件划分。（scope 可省略）
+- scope 用于指定本次 commit 影响的范围。scope 依据项目而定，例如在业务项目中可以依据菜单或者功能模块划分，如果是组件库开发，则可以依据组件划分。（scope 可省略）
 
-# subject 是本次 commit 的简洁描述，
+- subject 是本次 commit 的简洁描述，
 
 ## Body
 
-# body 是对本次 commit 的详细描述，可以分成多行。（body 可省略）
+- body 是对本次 commit 的详细描述，可以分成多行。（body 可省略）
 
 ## Footer(项目开发可以省略)
 
@@ -334,7 +335,7 @@ npx commitizen init cz-customizable --save-dev --save-exact --force
 
 ## 使用 cz-customizable
 
-在项目根目录下创建 .cz-config.js 文件，然后按照官方提供的<Button type="link" href="https://github.com/leoforfree/cz-customizable/blob/master/cz-config-EXAMPLE.js" target="_blank">示例</Button>来配置。
+在项目根目录下创建 .cz-config.js 文件，然后按照官方提供的[示例](https://github.com/leoforfree/cz-customizable/blob/master/cz-config-EXAMPLE.js)来配置。
 
 ```js
 module.exports = {

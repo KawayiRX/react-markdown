@@ -69,9 +69,20 @@ export const P = styled.p`
   margin: 5px 0;
 `
 
+export const Link = styled.a``
+
+export const Em = styled.em`
+  color: red;
+`
+
 export const Li = styled.li`
   max-width: ${polished.rem(800)};
   margin: 7px 0;
+`
+
+export const Td = styled.td`
+  padding: ${polished.rem(20)};
+  border: 1px solid #eee;
 `
 
 export const Line = styled.div`
