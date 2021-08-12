@@ -35,10 +35,7 @@ module.exports = override(
       use: [
         'babel-loader',
         {
-          loader: '@mdx-js/loader',
-          options: {
-            // remarkPlugins: [remarkGridTables]
-          }
+          loader: '@mdx-js/loader'
         }
       ]
     })
