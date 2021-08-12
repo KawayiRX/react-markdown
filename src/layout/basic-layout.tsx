@@ -14,7 +14,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   return (
     <Layout style={{ height: '100%' }}>
       <CustomHeader>
-        <Slider routes={route.routes} />
+        <Slider routes={route.routes} className="slider" />
       </CustomHeader>
       <Layout>
         <OuterContent>{children}</OuterContent>

@@ -10,10 +10,11 @@ interface SliderType {
   collapsed?: boolean
   store?: any
   mode?: 'horizontal' | 'inline'
+  className?: string
 }
 
 const Slider: React.FC<SliderType> = (props) => {
-  const { routes = [], mode = 'horizontal' } = props
+  const { routes = [], mode = 'horizontal', ...rest } = props
 
   const renderMenuItem = (route: RouteTypes[]): any =>
     route
@@ -43,7 +44,13 @@ const Slider: React.FC<SliderType> = (props) => {
   return (
     // <Layout.Sider trigger={null} collapsible theme="light">
     // <div className="logo" />
-    <Menu theme="light" mode={mode} defaultActiveFirst defaultSelectedKeys={[routes[0]?.path]}>
+    <Menu
+      theme="light"
+      mode={mode}
+      defaultActiveFirst
+      defaultSelectedKeys={[routes[0]?.path]}
+      {...rest}
+    >
       {renderMenuItem(routes || [])}
     </Menu>
     // </Layout.Sider>

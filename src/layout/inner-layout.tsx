@@ -12,8 +12,6 @@ interface InnerLayoutProps {
   route: RouteTypes
 }
 
-// export const AnchorContext = React.createContext(anchor['/react/base'])
-
 const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
   const { route } = props
 
@@ -25,9 +23,7 @@ const InnerLayout: React.FC<InnerLayoutProps> = (props) => {
         <Menu routes={route.routes} mode="inline" />
       </CustomSider>
       <CustomContent>
-        {/* <AnchorContext.Provider value={anchor[route.path]}> */}
         <Highlight {...props} />
-        {/* </AnchorContext.Provider> */}
         <AnchorWrapper>
           <Anchor anchor={anchor[local.pathname]} />
         </AnchorWrapper>

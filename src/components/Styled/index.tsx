@@ -6,7 +6,7 @@ type TextColor = 'danger' | 'warning' | 'success'
 
 const getColor = (type: TextColor) => {
   const colors = {
-    danger: '#ff4d4f',
+    danger: 'rgb(247, 140, 108)',
     warning: '#faad14',
     success: '#52c41a'
   }

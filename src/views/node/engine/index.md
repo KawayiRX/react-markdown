@@ -8,8 +8,6 @@ import Husky4 from 'assets/images/husky4.png'
 
 ## 代码规范 (EditorConfig + Prettier + ESLint)
 
-**sss**
-
 - 解决团队之间代码不规范导致的可读性差和可维护性差的问题。
 - 解决团队成员不同编辑器导致的编码规范不统一问题。
 - 提前发现代码风格问题，给出对应规范提示，及时修复。

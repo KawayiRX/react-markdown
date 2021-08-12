@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Layout } from 'antd'
 
 const { Content, Sider, Header } = Layout
@@ -30,6 +30,32 @@ export const OuterContent = styled(Content)`
   min-height: 280;
 `
 
+const move = keyframes`
+0%,
+  100%{
+    background-position-x: left;
+  }
+  50%{
+    background-position-x: right;
+  }
+`
+
 export const CustomHeader = styled(Header)`
-  background: #fff;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(135deg, #f66, #f90, #3c9, #09f, #66f) left center/400% 400%;
+  font-weight: bold;
+  font-size: 100px;
+  color: #fff;
+  animation: ${move} 10s infinite;
+  .slider {
+    background: transparent;
+    border-bottom: none;
+    height: 100%;
+    .ant-menu-item-selected a {
+      color: #fff;
+    }
+  }
 `

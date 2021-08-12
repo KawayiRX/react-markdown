@@ -172,6 +172,12 @@ export const reactLiveHome: PrismTheme = {
       style: { color: '#61afef' }
     },
     {
+      types: ['inserted'],
+      style: {
+        color: 'rgb(178, 204, 214)'
+      }
+    },
+    {
       types: ['tag'],
       style: { color: '#e06c75' }
     },

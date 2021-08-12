@@ -70,17 +70,21 @@ export const Copy = styled.div`
 
 export const P = styled.p`
   margin: 5px 0;
+  line-height: inherit;
+  /* width: 50%; */
 `
 
 export const Link = styled.a``
 
 export const Em = styled.em`
-  color: red;
+  color: rgb(247, 140, 108);
+  font-size: ${polished.rem(18)};
 `
 
 export const Li = styled.li`
   max-width: ${polished.rem(800)};
   margin: 7px 0;
+  font-size: ${polished.rem(15)};
 `
 
 export const Td = styled.td`
@@ -143,8 +147,9 @@ export const StyledEditor = styled.div`
   position: relative;
   font-family: 'Source Code Pro', monospace;
   font-size: ${polished.rem(codeSize)};
-  height: ${polished.rem(350)};
+  /* height: ${polished.rem(350)}; */
   max-height: ${polished.rem(350)};
+  margin: 10;
   overflow: auto;
   ${column};
   * > textarea:focus {
@@ -177,4 +182,13 @@ export const StyledError = styled(LiveError)`
   text-align: left;
   font-size: 0.9em;
   font-family: 'Source Code Pro', monospace;
+`
+
+export const Blockquote = styled.blockquote`
+  border-left: 3px solid #ccc;
+  color: #666;
+  padding: 1px 23px;
+  background-color: #f8f8f8;
+  border-left: 4px solid #cbcbcb;
+  margin: 10 0;
 `
