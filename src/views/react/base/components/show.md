@@ -7,8 +7,9 @@ const element = <h1>Hello, world</h1>
 ReactDOM.render(element, document.getElementById('root'))
 ```
 
-- ## 更新渲染
-  - React 元素遵循不可变原则, 只要创建就不会再改变。所以更新 UI 的唯一途径就是生成新的元素传入 ReactDOM.render()
+# 更新渲染
+
+- React 元素遵循不可变原则, 只要创建就不会再改变。所以更新 UI 的唯一途径就是生成新的元素传入 ReactDOM.render()
 
 ```jsx
 function tick() {

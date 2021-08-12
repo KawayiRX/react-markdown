@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import { mdx } from '@mdx-js/react'
 import { LiveEditor } from 'react-live'
-import provideTheme from 'prism-react-renderer/themes/github'
+// import provideTheme from 'prism-react-renderer/themes/palenight'
 import Echarts from 'components/echarts/base-charts'
 import Clipboard from 'clipboard'
 import {
@@ -19,6 +19,7 @@ import {
   PreWrapper,
   Copy
 } from 'components/highlight/styles'
+import { reactLiveHome } from './theme'
 import * as AntDesign from './ant-design'
 
 interface IHighlightProps {
@@ -29,6 +30,11 @@ interface IHighlightProps {
   noInline?: boolean
   width?: string
 }
+// class Demo extends React.Component {
+//   render() {
+//     return <div>333</div>
+//   }
+// }
 
 const IHighlight: React.FC<IHighlightProps> = (props) => {
   const { className = '', live, children = '', render, noInline = true, width } = props
@@ -38,7 +44,6 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
   const CopyButton = useMemo(
     () => (
       <Copy
-        className="copy"
         data-clipboard-text={children}
         onClick={() => {
           const clipboard = new Clipboard('.copy')
@@ -62,7 +67,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
   if (live || render) {
     return (
       <StyledProvider
-        theme={provideTheme}
+        theme={reactLiveHome}
         style={{ border: 'none' }}
         code={children.trim()}
         noInline={noInline}
@@ -94,7 +99,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
         <LiveWrapper>
           <StyledEditor>
             {CopyButton}
-            <LiveEditor />
+            <LiveEditor style={{ fontFamily: 'auto' }} />
           </StyledEditor>
           <StyledPreview />
         </LiveWrapper>
@@ -104,7 +109,7 @@ const IHighlight: React.FC<IHighlightProps> = (props) => {
   }
 
   return (
-    <Highlight {...defaultProps} code={children} language={lang} theme={provideTheme}>
+    <Highlight {...defaultProps} code={children} language={lang} theme={reactLiveHome}>
       {({ className: classs, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={classs} style={{ ...style, width }}>
           <PreWrapper>

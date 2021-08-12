@@ -36,6 +36,7 @@ export const H4 = styled.h1`
 export const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
+  border-radius: ${polished.rem(10)};
   padding: 0.5em;
   width: 50%;
   overflow: scroll;
@@ -50,6 +51,7 @@ export const PreWrapper = styled.div`
   max-height: ${polished.rem(350)};
   overflow: auto;
   font-size: ${polished.rem(codeSize)};
+  font-family: 'auto';
   &::-webkit-scrollbar {
     height: 0 !important;
     width: 0px !important;
@@ -63,6 +65,7 @@ export const Copy = styled.div`
   cursor: pointer;
   z-index: 10;
   font-size: 15px;
+  color: #e5c07b;
 `
 
 export const P = styled.p`
@@ -105,6 +108,7 @@ export const StyledProvider = styled(LiveProvider)`
   border-radius: ${polished.rem(3)};
   box-shadow: 1px 1px 20px rgba(20, 20, 20, 0.27);
   overflow: hidden;
+  border-radius: ${polished.rem(10)};
   margin-bottom: ${polished.rem(100)};
 `
 
@@ -135,6 +139,7 @@ export const column = css`
 
 export const StyledEditor = styled.div`
   background: #fff;
+  border-radius: ${polished.rem(10)};
   position: relative;
   font-family: 'Source Code Pro', monospace;
   font-size: ${polished.rem(codeSize)};
@@ -164,6 +169,7 @@ export const StyledPreview = styled(LivePreview)`
 
 export const StyledError = styled(LiveError)`
   display: block;
+  border-radius: 10px;
   padding: ${polished.rem(8)};
   background: ${red};
   color: ${foreground};
